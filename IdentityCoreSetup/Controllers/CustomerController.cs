@@ -45,5 +45,12 @@ namespace IdentityCoreSetup.Controllers
             CustomerServices.UpdateCustomer(Customer);
             return new JsonResult("Record Updated");
         }
+        public JsonResult UpdatethroughRent(int id, DateTime Nextdate)
+        {
+            var customer = CustomerServices.GetCustomerById(id);
+            customer._NextDueDate = Nextdate;
+            CustomerServices.UpdateCustomer(customer);
+            return new JsonResult("Record Updated");
+        }
     }
 }

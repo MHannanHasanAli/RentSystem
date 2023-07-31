@@ -1,0 +1,105 @@
+﻿<div id="userListContainer" class="container mt-4">
+
+    <h1>Rent History</h1>
+   
+    <br />
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Payment Method</th>
+                <th>Date (YYYY-MM-DD)</th>
+            </tr>
+        </thead>
+        <tbody id="table_data">
+           
+        </tbody>
+    </table>
+    <nav id="paginationContainer">
+        <ul id="pagination" class="pagination justify-content-center"></ul>
+    </nav>
+</div>
+<script>
+    $(document).ready(function () {
+
+        RentShow();
+    });
+    function RentShow() {
+        $.ajax({
+            url: '/Rent/RentIndex',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8;',
+            success: function (result) {
+                var object = '';
+                var count = 0;
+                $.each(result, function (index, item) {
+                    object += '<tr>';
+                    object += '<td>' + item._CustomerName + '</td>';
+                    object += '<td>$' + item._Amount + '/-</td>';
+                    object += '<td>' + item._Type + '</td>';
+                    var datePart = item._PaymentDate.split("T")[0];
+                    object += '<td>' + datePart + '</td>';
+                    object += '</tr>';
+                    count++;                   
+                });
+                $('#table_data').html(object);
+                if (count > 6) {
+                    pagination();
+                }
+            },
+            error: function () {
+                // Handle error if necessary
+            }
+        });
+    }
+    function pagination() {
+        var table = $('#myTable');
+        var rowsPerPage = 5; // Number of rows to show per page
+
+        var totalRows = table.find('tbody tr').length;
+        if (totalRows <= rowsPerPage) {
+            // No need for pagination if the total rows do not exceed the limit
+            return;
+        }
+
+        var totalPages = Math.ceil(totalRows / rowsPerPage);
+        var currentPage = 1;
+
+        // Clear existing pagination links
+        $('#pagination').empty();
+
+        // Show "Previous" button with arrow icon
+        $('#pagination').append('<li class="page-item" id="previousPage"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&lt;</span></a></li>');
+
+        // Show "Next" button with arrow icon
+        $('#pagination').append('<li class="page-item" id="nextPage"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&gt;</span></a></li>');
+
+        // Show the first page by default
+        showPage(currentPage);
+
+        // Handle click event on "Previous" and "Next" buttons
+        $('#previousPage').on('click', function () {
+            if (currentPage > 1) {
+                showPage(--currentPage);
+            }
+        });
+
+        $('#nextPage').on('click', function () {
+            if (currentPage < totalPages) {
+                showPage(++currentPage);
+            }
+        });
+
+        function showPage(pageNumber) {
+            var startIndex = (pageNumber - 1) * rowsPerPage;
+            var endIndex = startIndex + rowsPerPage;
+            table.find('tbody tr').hide().slice(startIndex, endIndex).show();
+
+            // Update active state of pagination buttons
+            $('#previousPage').toggleClass('disabled', currentPage === 1);
+            $('#nextPage').toggleClass('disabled', currentPage === totalPages);
+        }
+    }
+</script>

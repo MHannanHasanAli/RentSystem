@@ -7,7 +7,7 @@ namespace IdentityCoreSetup.Controllers
     public class RentController : Controller
     {
         RentServices RentServices = new RentServices();
-
+        CustomerServices CustomerServices = new CustomerServices();
         public IActionResult Index()
         {
             return View();
@@ -23,6 +23,8 @@ namespace IdentityCoreSetup.Controllers
         [HttpPost]
         public JsonResult Create(Rent Rent)
         {
+            var customer = CustomerServices.GetCustomerById(Rent._CustomerId);
+            Rent._CustomerName = customer._Name;
             RentServices.CreateRent(Rent);
             return new JsonResult("Rent Added");
 

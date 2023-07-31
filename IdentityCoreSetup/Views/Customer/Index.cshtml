@@ -8,10 +8,13 @@
     }
 
     #IconButtonEdit{
-      margin-left: 50px;
+      margin-left: 7px;
     }
 
     #IconButtonDel {
+        margin-left: 7px;
+    }
+    #IconButtonRent{
         margin-left: 7px;
     }
     #mainheading{
@@ -141,7 +144,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade modal" id="createCustomerWindow">
+<div class="modal fade modal" id="createCustomerWindowRent">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -156,11 +159,10 @@
                             <input type="hidden" id="popupId" class="form-control" disabled="disabled" autocomplete="off" />
                         </div>                     
                         <div class="form-group">
-                            <label>Amount</label>
-                            <input type="number" placeholder="$" id="popupAmount" class="form-control" autocomplete="off" />
+                            <h1 id ="popupAmount"></h1>
                         </div><br />
                         <div class="form-group">
-                            <label>Rent Type</label>
+                            <label>Payment Method</label>
                             <select class="form-control" name="project" id="popupPaymentType" autocomplete="off">
                                 <option class="dropdown-item" value="Cash">Cash</option>
                                 <option class="dropdown-item" value="Online">Online</option>
@@ -169,6 +171,10 @@
                         <div class="form-group">
                             <label>Payment Date</label>
                             <input type="date" placeholder="$" id="popupPaymentDate" class="form-control" autocomplete="off" />
+                        </div><br />
+                        <div class="form-group">
+                            <label>Next Due Date</label>
+                            <input type="date" placeholder="$" id="popupDueDate" class="form-control" autocomplete="off" />
                         </div>
                     </form>
                 </div>
@@ -176,9 +182,59 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" id="AddCustomerBTN" onclick="saveCustomer();">Create</button>
+                <button class="btn btn-primary" id="AddCustomerBTN" onclick="saveRent();">Add Payment</button>
                 <button class="btn btn-warning" id="UpdateCustomerBTN" onclick="updateCustomer();" style="display:none">Update</button>
                 <button class="btn btn-danger" id="CloseCustomerBTN" onclick="closeModalRent();" style="display:none">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal" id="createCustomerWindowDetails">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-info modal-title text-black" id="CustomerheadingDetails">Customer Details</h1>
+                <button type="button" class="btn-close" aria-label="Close" onclick="closeModalDetails();"></button>
+                @* <button class="close text-danger" data-dismiss="modal">&times;</button>*@
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form>
+                        <div class="form-group">
+                            <input type="hidden" id="popupId" class="form-control" disabled="disabled" autocomplete="off" />
+                        </div>
+                        <div class="form-group">
+                            <label id ="popupNameDetails"></label>
+                           
+                        </div><br />
+                        <div class="form-group">
+                            <label id="popupAddressDetails">Address</label>
+                        </div><br />
+                        <div class="form-group">
+                            <label id="popupContactNoDetails">Contact Number</label>
+                        </div><br />
+                        <div class="form-group">
+                            <label id="popupEmailDetails">Email</label>
+                        </div><br />
+                        <div class="form-group">
+                            <label id="popupTotalRentDetails">Total Rent</label>
+                           
+                        </div><br />
+                        <div class="form-group">
+                            <label id="popuprentTypeDetails">Rent Type</label>
+
+                        </div><br />
+                        <div class="form-group">
+                            <label id="popupDueDateDetails">Rent Type</label>
+
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" id="CloseCustomerBTN" onclick="closeModalDetails();">Close</button>
             </div>
         </div>
     </div>
@@ -187,16 +243,24 @@
     $(document).ready(function () {
          CustomerShow();
     })
-    function createCustomerRent() {
-        cleartextboxRent();
-        $('#createCustomerWindow').modal('show');
+
+    var customerid;
+    var Totalrent;
+    
+    function createCustomerRent(id,rent) {
+        customerid = id;
+        Totalrent = rent;
+
+        cleartextboxRent(rent);
+        $('#createCustomerWindowRent').modal('show');
     }
     function closeModalRent() {
-        $('#createCustomerWindow').modal('hide');
+
+        $('#createCustomerWindowRent').modal('hide');
     }
-    function cleartextboxRent() {
+    function cleartextboxRent(rent) {
         //$('#popupId').val('');
-        $('#popupAmount').val('');
+        $('#popupAmount').text("Amount : $" + rent+"/-");
         $('#popupPaymentType').val('');
         $('#popupPaymentDate').val('');
     }
@@ -270,10 +334,10 @@
                     object += '<h5 class="card-title">'+ item._Name +'</h5>';
                     object += '</div>';
                     object += '<p class="card-text">' + item._Email + '</p>';
-                    object += '<a href="#" class="btn btn-primary" onclick="viewCustomer(' + item._id + ')"> + Details</a>';
-                    object += '<a href="#" class="btn btn-success" onclick="CollectRent(' + item._id + ')"> Collect Rent</a>';
-                    object += '<a href="#" id="IconButtonEdit" class="btn btn-primary fa-solid" onclick="editCustomer(' + item._id + ')"><i class="fa fa-pen" aria-hidden="true"></i></a>';
-                    object += '<a href="#"  id="IconButtonDel" class="btn btn-danger fa-solid" onclick="deleteCustomer(' + item._id + ' )"><i class="fa fa-trash" aria-hidden="true"></i></a>';
+                    object += '<a href="#" class="btn btn-primary" onclick="viewCustomer(' + item._Id + ')"> + Details</a>';
+                    object += '<a href="#" id="IconButtonRent" class="btn btn-success" onclick="createCustomerRent(' + item._Id + ', ' + item._TotalRent + ')">$</a>';
+                    object += '<a href="#" id="IconButtonEdit" class="btn btn-primary fa-solid" onclick="editCustomer(' + item._Id + ')"><i class="fa fa-pen" aria-hidden="true"></i></a>';
+                    object += '<a href="#"  id="IconButtonDel" class="btn btn-danger fa-solid" onclick="deleteCustomer(' + item._Id + ' )"><i class="fa fa-trash" aria-hidden="true"></i></a>';
                     object += '</div>';
                     object += '</div>';
                     object += '</div>'; 
@@ -341,8 +405,14 @@
         cleartextbox();
         $('#createCustomerWindow').modal('show');
     }
+    function createCustomerDetails() {
+        $('#createCustomerWindowDetails').modal('show');
+    }
     function closeModal() {
         $('#createCustomerWindow').modal('hide');
+    }
+    function closeModalDetails() {
+        $('#createCustomerWindowDetails').modal('hide');
     }
     function cleartextbox() {
         //$('#popupId').val('');
@@ -353,7 +423,50 @@
         $('#popupTotalRent').val('');
         $('#popuprentType').val('');
     }
+    function saveRent() {
 
+        var type = $('#popupPaymentType').val();
+        var date = $('#popupPaymentDate').val();
+        var duedate = $('#popupDueDate').val();
+        // Check if any field is empty
+        if (!date){
+            alert('Please fill in all the fields.');
+            return;
+        }
+
+        $.ajax({
+            url: '/Rent/Create',
+            type: 'POST',
+            data: {
+                _CustomerId: customerid,
+                _Amount: Totalrent,
+                _PaymentDate: date,
+                _Type: type
+               
+            },
+            success: function () {
+                
+            },
+            error: function () {
+                // Handle error
+            }
+        });
+        $.ajax({
+            url: '/Customer/UpdatethroughRent',
+            type: 'POST',
+            data: {
+                id: customerid,
+                Nextdate: duedate
+            },
+            success: function () {
+                CustomerShow();
+                closeModalRent();
+            },
+            error: function () {
+                // Handle error
+            }
+        });
+    }
     function saveCustomer() {
         var name = $('#popupName').val();
         var address = $('#popupAddress').val();
@@ -411,14 +524,17 @@
             url: '/Customer/Edit?id=' + id,
             type: 'GET',
             success: function (response) {
-                createCustomer();
-                $('#popupId').val(response._id);
-                $('#popupName').val(response._Name);
-                $('#popupAddress').val(response._Address);
-                $('#popupContactNo').val(response._ContactNo);
-                $('#popupEmail').val(response._Email);
-                $('#popupTotalRent').val(response._TotalRent);
-                $('#popuprentType').val(response._TypeOfRent);
+                createCustomerDetails();
+                $('#popupIdDetails').text(response._id);
+                $('#popupNameDetails').text('Name : ' + response._Name);
+                $('#popupAddressDetails').text('Address : ' + response._Address);
+                $('#popupContactNoDetails').text('Phone Number : ' + response._ContactNo);
+                $('#popupEmailDetails').text('Email : ' + response._Email);
+                $('#popupTotalRentDetails').text('Rent : $' + response._TotalRent+'/-');
+                $('#popuprentTypeDetails').text('Rent Category : ' + response._TypeOfRent);
+                var onlydate = response._NextDueDate.split("T")[0];
+                $('#popupDueDateDetails').text('Due Date : ' + onlydate);
+                
                 //can work with both css and hide function---same result
                 //$('#AddCustomerBTN').css('display','none');
                 //$('#UpdateCustomerBTN').css('display', 'block');
