@@ -12,8 +12,69 @@ namespace IdentityCoreSetup.Controllers
         {
             return View();
         }
+      
+        
+
+        public JsonResult Deadlines()
+        {
+            List<Customer> DeadlineCustomers = new List<Customer>();
+            var customers = CustomerServices.GetCustomers();
+            var todayDate = DateTime.Today;
+            
+           
+            foreach (var customer in customers)
+            {
+                if (customer._TypeOfRent == "annually")
+                {
+                    var givenDate = customer._NextDueDate;
+
+                    var daysDifference = (givenDate.Date - todayDate).Days;
+
+                    if (daysDifference <= 90 && daysDifference >= 0)
+                    {
+                        DeadlineCustomers.Add(customer);
+
+                    }
+                }
+                else
+                {
+                    var givenDate = customer._NextDueDate;
+
+                    var daysDifference = (givenDate.Date - todayDate).Days;
+
+                    if (daysDifference <= 5 && daysDifference >= 0)
+                    {
+                        DeadlineCustomers.Add(customer);
+
+                    }
+                }
+            }
 
 
+            return new JsonResult(DeadlineCustomers);
+            
+        }
+        public JsonResult Defaulter()
+        {
+            List<Customer> DefaultCustomers = new List<Customer>();
+            var customers = CustomerServices.GetCustomers();
+            var todayDate = DateTime.Today;
+
+
+            foreach (var customer in customers)
+            {
+                var givenDate = customer._NextDueDate;               
+
+                if (todayDate > givenDate)
+                {
+                    DefaultCustomers.Add(customer) ;
+                }
+            }
+
+
+            return new JsonResult(DefaultCustomers);
+
+        }
         public JsonResult CustomerIndex()
         {
             var data = CustomerServices.GetCustomers();

@@ -1,8 +1,305 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<style>
+    .card {
+        margin-bottom: 20px;
+    }
+
+    #IconButtonEdit {
+        margin-left: 7px;
+    }
+
+    #IconButtonDel {
+        margin-left: 7px;
+    }
+
+    #IconButtonRent {
+        margin-left: 7px;
+    }
+
+    #mainheading {
+        color: white;
+    }
+
+    #white {
+        color: white;
+    }
+
+    .leftSpace {
+        margin-left: 2%;
+    }
+
+    .black {
+        color: Black;
+    }
+</style>
+<style type="text/css">
+    @@media (max-width: 767px) {
+        #mainheading {
+            text-align: center;
+        }
+
+        .col-lg-2,
+        .col-md-6,
+        .col-12 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        #startdate {
+            margin-left: 0px;
+        }
+
+        .leftSpace {
+            display: none;
+        }
+    }
+
+    @@media (min-width: 992px) {
+        #mainheading {
+            text-align: left;
+            color: white;
+        }
+
+        .col-lg-2,
+        .col-md-6,
+        .col-12 {
+            text-align: left;
+            margin-bottom: 0;
+        }
+
+        #startdate {
+            margin-left: 20px;
+        }
+
+        .leftSpace {
+            margin-left: 2%;
+        }
+    }
+
+</style>
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <h3>Upcoming Rent Deadlines</h3>
+    <hr />
 </div>
+<div class="row" id="CustomerCardView">
+</div>
+<nav id="paginationContainer">
+    <ul id="pagination" class="pagination justify-content-center"></ul>
+</nav>
+
+<div class="text-center">
+
+    <h3>Rent Defaulters</h3>
+    <hr />
+</div>
+<div class="row" id="CustomerCardViewdefaulter">
+</div>
+<nav id="paginationContainerdefaulter">
+    <ul id="paginationdefaulter" class="pagination justify-content-center"></ul>
+</nav>
+<script>
+    $(document).ready(function () {
+        CustomerShow();
+        CustomerShowDefaulter();
+    })
+    function CustomerShow() {
+
+        $.ajax({
+            url: '/Customer/Deadlines',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8;',
+
+            success: function (result) {
+                var object = '';
+                var count = 0;
+                $.each(result, function (index, item) {
+                    object += '<div class="col-sm-3">';
+                    object += '<div class="card">';
+                    object += '<div class="card-body">';
+                    object += '<div class="d-flex align-items-center">';
+                    object += '<img src="/images/man.png" style="width: 30px; height: 30px;" />';
+                    object += '<h5 class="card-title">' + item._Name + '</h5>';
+                    object += '</div>';
+                    object += '<p class="card-text">' + item._Email + '</p>';
+                    var onlydate = item._NextDueDate.split("T")[0];
+                    object += '<p class="card-text"> Due Date: ' + onlydate + '</p>';
+                    object += '</div>';
+                    object += '</div>';
+                    object += '</div>';
+                    count++;
+                });
+                $('#CustomerCardView').html(object);
+                if (count > 4) {
+                    pagination();
+                }
+            },
+            error: function () {
+
+            }
+        });
+    }
+    function CustomerShowDefaulter() {
+        $.ajax({
+            url: '/Customer/Defaulter',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8;',
+
+            success: function (result) {
+                var object = '';
+                var count = 0;
+                $.each(result, function (index, item) {
+                    object += '<div class="col-sm-3">';
+                    object += '<div class="card dd">';
+                    object += '<div class="card-body">';
+                    object += '<div class="d-flex align-items-center">';
+                    object += '<img src="/images/man.png" style="width: 30px; height: 30px;" />';
+                    object += '<h5 class="card-title">' + item._Name + '</h5>';
+                    object += '</div>';
+                    object += '<p class="card-text">' + item._Email + '</p>';
+                    var onlydate = item._NextDueDate.split("T")[0];
+                    object += '<p class="card-text"> Due Date: ' + onlydate + '</p>';
+                   object += '</div>';
+                    object += '</div>';
+                    object += '</div>';
+                    count++;
+                });
+                $('#CustomerCardViewdefaulter').html(object);
+                if (count > 4) {
+                    paginationdefaulter();
+                }
+            },
+            error: function () {
+
+            }
+        });
+    }
+    function paginationdefaulter() {
+        var cards = $('.dd');
+        var cardsPerPage = 4; // Number of cards to show per page
+
+        var totalCards = cards.length;
+        if (totalCards <= cardsPerPage) {
+            // No need for pagination if the total cards do not exceed the limit
+            return;
+        }
+
+        var totalPages = Math.ceil(totalCards / cardsPerPage);
+        var currentPage = 1;
+
+        // Clear existing pagination links
+        $('#paginationdefaulter').empty();
+
+        // Add arrow links for next and previous pages
+        $('#paginationdefaulter').append('<li class="page-item prev"><a class="page-link" href="#">&#8249;</a></li>');
+        $('#paginationdefaulter').append('<li class="page-item next"><a class="page-link" href="#">&#8250;</a></li>');
+
+        // Show the first page by default
+        showPage(currentPage);
+
+        // Handle click event on pagination links
+        $('#paginationdefaulter').on('click', 'li.page-item', function () {
+            var isPrev = $(this).hasClass('prev');
+            var isNext = $(this).hasClass('next');
+
+            if (isPrev && currentPage > 1) {
+                currentPage--;
+            } else if (isNext && currentPage < totalPages) {
+                currentPage++;
+            }
+
+            showPage(currentPage);
+        });
+
+        function showPage(pageNumber) {
+            var startIndex = (pageNumber - 1) * cardsPerPage;
+            var endIndex = startIndex + cardsPerPage;
+            cards.hide().slice(startIndex, endIndex).show();
+
+            // Update active state of pagination links
+            $('#paginationdefaulter li.page-item').removeClass('active');
+            $('#paginationdefaulter li.page-item:eq(' + (pageNumber - 1) + ')').addClass('active');
+
+            // Show/hide next and previous page arrows
+            if (currentPage === 1) {
+                $('#paginationdefaulter .prev').addClass('disabled');
+            } else {
+                $('#paginationdefaulter .prev').removeClass('disabled');
+            }
+
+            if (currentPage === totalPages) {
+                $('#paginationdefaulter .next').addClass('disabled');
+            } else {
+                $('#paginationdefaulter .next').removeClass('disabled');
+            }
+        }
+    }
+    //Pagination
+    // Pagination
+    function pagination() {
+        var cards = $('.card');
+        var cardsPerPage = 4; // Number of cards to show per page
+
+        var totalCards = cards.length;
+        if (totalCards <= cardsPerPage) {
+            // No need for pagination if the total cards do not exceed the limit
+            return;
+        }
+
+        var totalPages = Math.ceil(totalCards / cardsPerPage);
+        var currentPage = 1;
+
+        // Clear existing pagination links
+        $('#pagination').empty();
+
+        // Add arrow links for next and previous pages
+        $('#pagination').append('<li class="page-item prev"><a class="page-link" href="#">&#8249;</a></li>');
+        $('#pagination').append('<li class="page-item next"><a class="page-link" href="#">&#8250;</a></li>');
+
+        // Show the first page by default
+        showPage(currentPage);
+
+        // Handle click event on pagination links
+        $('#pagination').on('click', 'li.page-item', function () {
+            var isPrev = $(this).hasClass('prev');
+            var isNext = $(this).hasClass('next');
+
+            if (isPrev && currentPage > 1) {
+                currentPage--;
+            } else if (isNext && currentPage < totalPages) {
+                currentPage++;
+            }
+
+            showPage(currentPage);
+        });
+
+        function showPage(pageNumber) {
+            var startIndex = (pageNumber - 1) * cardsPerPage;
+            var endIndex = startIndex + cardsPerPage;
+            cards.hide().slice(startIndex, endIndex).show();
+
+            // Update active state of pagination links
+            $('#pagination li.page-item').removeClass('active');
+            $('#pagination li.page-item:eq(' + (pageNumber - 1) + ')').addClass('active');
+
+            // Show/hide next and previous page arrows
+            if (currentPage === 1) {
+                $('#pagination .prev').addClass('disabled');
+            } else {
+                $('#pagination .prev').removeClass('disabled');
+            }
+
+            if (currentPage === totalPages) {
+                $('#pagination .next').addClass('disabled');
+            } else {
+                $('#pagination .next').removeClass('disabled');
+            }
+        }
+    }
+
+</script>

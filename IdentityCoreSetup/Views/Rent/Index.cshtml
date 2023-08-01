@@ -1,4 +1,9 @@
-﻿<div id="userListContainer" class="container mt-4">
+﻿<style>
+    #IconButtonDel{
+        margin-left: 2px;
+    }
+</style>
+<div id="userListContainer" class="container mt-4">
 
     <h1>Rent History</h1>
    
@@ -10,6 +15,7 @@
                 <th>Amount</th>
                 <th>Payment Method</th>
                 <th>Date (YYYY-MM-DD)</th>
+                <th>Operations</th>
             </tr>
         </thead>
         <tbody id="table_data">
@@ -20,11 +26,67 @@
         <ul id="pagination" class="pagination justify-content-center"></ul>
     </nav>
 </div>
+<div class="modal fade modal" id="createCustomerWindowRent">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-info modal-title text-black" id="CustomerRentheading">Collect rent</h1>
+                <button type="button" class="btn-close" aria-label="Close" onclick="closeModalRent();"></button>
+                @* <button class="close text-danger" data-dismiss="modal">&times;</button>*@
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form>
+                        <div class="form-group">
+                            <input type="hidden" id="popupId" class="form-control" disabled="disabled" autocomplete="off" />
+                        </div>
+                        <div class="form-group">
+                            <label>Customer Name</label>
+                            <input placeholder="Name" id="popupName" class="form-control" autocomplete="off" />
+                        </div><br />
+                        <div class="form-group">
+                            <label>Rent</label>
+                            <input type="number" placeholder="$" id="popupAmount" class="form-control" autocomplete="off" />
+                        </div><br />
+                        <div class="form-group">
+                            <label>Payment Method</label>
+                            <select class="form-control" name="project" id="popupPaymentType" autocomplete="off">
+                                <option class="dropdown-item" value="Cash">Cash</option>
+                                <option class="dropdown-item" value="Online">Online</option>
+                            </select>
+                        </div><br />
+                        <div class="form-group">
+                            <label>Payment Date</label>
+                            <input type="date"  id="popupPaymentDate" class="form-control" autocomplete="off" />
+                        </div>
+                      </form>  
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="AddCustomerBTN" onclick="saveRent();">Add Payment</button>
+                <button class="btn btn-warning" id="UpdateCustomerBTN" onclick="updateCustomer();" style="display:none">Update</button>
+                <button class="btn btn-danger" id="CloseCustomerBTN" onclick="closeModalRent();">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     $(document).ready(function () {
 
         RentShow();
     });
+
+    var customerid;
+
+    function createCustomerRent() {
+        $('#createCustomerWindowRent').modal('show');
+    }
+    function closeModalRent() {
+
+        $('#createCustomerWindowRent').modal('hide');
+    }
     function RentShow() {
         $.ajax({
             url: '/Rent/RentIndex',
@@ -41,6 +103,7 @@
                     object += '<td>' + item._Type + '</td>';
                     var datePart = item._PaymentDate.split("T")[0];
                     object += '<td>' + datePart + '</td>';
+                    object += '<td> <a href="#" id="IconButtonEdit" class="btn btn-primary fa-solid" onclick="editRent(' + item._Id + ')"><i class="fa fa-pen" aria-hidden="true"></i></a><a href="#"  id="IconButtonDel" class="btn btn-danger fa-solid" onclick="deleteRent(' + item._Id + ' )"><i class="fa fa-trash" aria-hidden="true"></i></a></td>';
                     object += '</tr>';
                     count++;                   
                 });
@@ -101,5 +164,76 @@
             $('#previousPage').toggleClass('disabled', currentPage === 1);
             $('#nextPage').toggleClass('disabled', currentPage === totalPages);
         }
+    }
+    function deleteRent(id) {
+        if (confirm('Are you sure you want to remove this Rent Entry?')) {
+            $.ajax({
+                url: '/Rent/Delete?id=' + id,
+                success: function () {
+                    RentShow();
+                },
+                error: function () {
+
+                }
+            });
+        }
+
+
+    }
+    function editRent(id) {
+        $.ajax({
+            url: '/Rent/Edit?id=' + id,
+            type: 'GET',
+            success: function (response) {
+                createCustomerRent();
+                $('#popupId').val(response._Id);
+                $('#popupName').val(response._CustomerName);
+                customerid = response._CustomerId;
+                $('#popupAmount').val(response._Amount);
+                $('#popupPaymentType').val(response._Type);
+                var datePart = response._PaymentDate.split("T")[0];
+                $('#popupPaymentDate').val(datePart);
+                //can work with both css and hide function---same result
+                //$('#AddCustomerBTN').css('display','none');
+                //$('#UpdateCustomerBTN').css('display', 'block');
+
+                $('#AddCustomerBTN').hide();
+                $('#UpdateCustomerBTN').show();
+                $('#Customerheading').text('Update Customer');
+                RentShow();
+            },
+            error: function () {
+
+            }
+        });
+    }
+    function updateCustomer() {
+
+        var id = $('#popupId').val();
+        var name = $('#popupName').val();
+        var amount = $('#popupAmount').val();
+        var type = $('#popupPaymentType').val();
+        var date = $('#popupPaymentDate').val();
+        
+
+        $.ajax({
+            url: '/Rent/Update',
+            type: 'POST',
+            data: {
+                _Id: id,
+                _CustomerId: customerid,
+                _CustomerName: name,
+                _Amount: amount,
+                _Type: type,
+                _PaymentDate: date
+            },
+            success: function () {
+                RentShow();
+                closeModalRent();
+            },
+            error: function () {
+
+            }
+        });
     }
 </script>
