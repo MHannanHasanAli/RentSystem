@@ -20,7 +20,7 @@ namespace IdentityCoreSetup.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=RentSystem-Database;Trusted_Connection=True;MultipleActiveResultSets=true");
+            optionsBuilder.UseSqlServer("Data Source=sql.bsite.net\\MSSQL2016;Integrated Security=False;initial catalog=rentsystem_db;User ID=rentsystem_db;Password=Mubix$2929;Connect Timeout=90;Encrypt=False;Packet Size=4096");
             base.OnConfiguring(optionsBuilder);
         }
     }

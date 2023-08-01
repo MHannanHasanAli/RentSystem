@@ -17,9 +17,9 @@ namespace IdentityCoreSetup.Data
 
             var user = new User
             {
-                UserName = "admin@gmail.com",
-                Email = "admin@gmail.com",
-                Name = "Admin Name",
+                UserName = "rentsystemadmin@mubixsol.com",
+                Email = "rentsystemadmin@mubixsol.com",
+                Name = "System Admin",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true
             };

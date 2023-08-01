@@ -219,7 +219,12 @@
         function showPage(pageNumber) {
             var startIndex = (pageNumber - 1) * cardsPerPage;
             var endIndex = startIndex + cardsPerPage;
-            cards.hide().slice(startIndex, endIndex).show();
+
+            // Hide all the defaulters first
+            cards.hide();
+
+            // Show the defaulters in the current page range
+            cards.slice(startIndex, endIndex).show();
 
             // Update active state of pagination links
             $('#paginationdefaulter li.page-item').removeClass('active');

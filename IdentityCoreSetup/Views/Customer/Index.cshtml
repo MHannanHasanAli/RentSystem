@@ -587,6 +587,11 @@
         var TotalRent = $('#popupTotalRent').val();
         var RentType = $('#popuprentType').val();
 
+        if (!id || !name || !address || !contactNo || !email || !TotalRent || !RentType) {
+            alert('Please fill in all the required fields.');
+            return;
+        }
+
         $.ajax({
             url: '/Customer/Update',
             type: 'POST',

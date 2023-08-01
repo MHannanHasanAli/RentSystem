@@ -1,12 +1,15 @@
-﻿using IdentityCoreSetup.Models;
+﻿using IdentityCoreSetup.Constants;
+using IdentityCoreSetup.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace IdentityCoreSetup.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+       
 
        
         public IActionResult Index()

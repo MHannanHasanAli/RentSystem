@@ -8,6 +8,9 @@
     nav {
         background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
     }
+    .distance{
+        margin-left: 2px;
+    }
   
 </style>
 <!DOCTYPE html>
@@ -15,7 +18,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - IdentityCoreSetup</title>
+    <title>Rent System</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/IdentityCoreSetup.styles.css" asp-append-version="true" />
@@ -28,24 +31,19 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">IdentityCoreSetup</a>
+                <img src="~/images/insurance.png" style="width: 30px; height: 30px;" />
+                <a class=" distance navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Rent System</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                       @* <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>*@
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                           @* <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="GetAll">Products</a>
-                            </li>*@
-                        }
+                    <ul class="navbar-nav flex-grow-1">                    
                         @if (User.IsInRole("Admin"))
                         {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Customer</a>
                             </li>
@@ -53,9 +51,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Rent" asp-action="Index">Rents</a>
                             </li>
                         }
-                       @* <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>*@
+                       
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -70,7 +66,8 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - IdentityCoreSetup - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023-By Mubix Solutions
+           @* &copy; 2023 - IdentityCoreSetup - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

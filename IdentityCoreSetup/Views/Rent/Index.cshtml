@@ -215,6 +215,9 @@
         var type = $('#popupPaymentType').val();
         var date = $('#popupPaymentDate').val();
         
+        if (!id || !name || !amount || !type || !date) {
+            alert('Please fill in all the required fields.');
+        }
 
         $.ajax({
             url: '/Rent/Update',

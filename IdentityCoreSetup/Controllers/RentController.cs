@@ -1,9 +1,12 @@
-﻿using IdentityCoreSetup.Entities;
+﻿using IdentityCoreSetup.Constants;
+using IdentityCoreSetup.Entities;
 using IdentityCoreSetup.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityCoreSetup.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RentController : Controller
     {
         RentServices RentServices = new RentServices();
