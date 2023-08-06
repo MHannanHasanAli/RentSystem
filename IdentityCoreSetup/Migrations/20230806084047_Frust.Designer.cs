@@ -4,6 +4,7 @@ using IdentityCoreSetup.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IdentityCoreSetup.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230806084047_Frust")]
+    partial class Frust
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,7 +104,95 @@ namespace IdentityCoreSetup.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("_Id"));
 
+                    b.Property<int?>("_Children")
+                        .HasColumnType("int");
+
+                    b.Property<string>("_ContactNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("_DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("_EAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_EContactNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_EName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_EPosition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_FAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_FContactNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_FName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_FOccupation")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("_Gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_HomeTown")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_MAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_MContactNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_MName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_MOccupation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_MaritalStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_Nationality")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("_NextDueDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("_Occupation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("_TenancyBegan")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal?>("_TotalRent")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("_TypeOfRent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_UAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_UContactNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_UName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_UOccupation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_URelation")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("_Id");

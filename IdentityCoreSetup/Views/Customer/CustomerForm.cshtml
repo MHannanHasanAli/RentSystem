@@ -1,0 +1,305 @@
+﻿
+    <style>
+        .form-group {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+            .form-group label {
+                width: 150px;
+                margin-right: 10px;
+                text-align: right;
+            }
+
+            .form-group input {
+                flex: 1;
+            }
+
+        /* Add any additional styling here */
+    </style>
+
+<body>
+    <h2>Customer Information Form</h2>
+    <form id="RecordForm">
+        <div class="form-group">
+            <label for="popupName">Name:</label>
+            <input type="text" id="popupName" name="popupName" required />
+            <label for="popupGender">Gender:</label>
+            <input type="text" id="popupGender" name="popupGender" />
+        </div>
+
+        <div class="form-group">
+            <label for="popupDateOfBirth">Date of Birth:</label>
+            <input type="date" id="popupDateOfBirth" name="popupDateOfBirth" />
+            <label for="popupMaritalStatus">Marital Status:</label>
+            <input type="text" id="popupMaritalStatus" name="popupMaritalStatus" />
+        </div>
+
+        <div class="form-group">
+            <label for="popupChildren">Children:</label>
+            <input type="number" id="popupChildren" name="popupChildren" />
+  
+            <label for="popupContactNo">Contact No:</label>
+            <input type="number" id="popupContactNo" name="popupContactNo" />
+        </div>
+        <div class="form-group">
+            <label for="popupTenancyBegan">Tenancy Began:</label>
+            <input type="date" id="popupTenancyBegan" name="popupTenancyBegan" />
+    
+            <label for="popupNationality">Nationality:</label>
+            <input type="text" id="popupNationality" name="popupNationality" />
+        </div>
+        <div class="form-group">
+            <label for="popupHomeTown">HomeTown:</label>
+            <input type="text" id="popupHomeTown" name="popupHomeTown" />
+
+            <label for="popupOccupation">Occupation:</label>
+            <input type="text" id="popupOccupation" name="popupOccupation" />
+        </div>
+        <hr />
+        <h1>Mother's Details</h1>
+        <div class="form-group">
+           
+            <label for="popupMName">Name:</label>
+            <input type="text" id="popupMName" name="popupMName" />
+            <label for="popupMAddress">Address:</label>
+            <input type="text" id="popupMAddress" name="popupMAddress" />
+        </div>
+        <div class="form-group">        
+
+            <label for="popupMContactNo">Contact No:</label>
+            <input type="number" id="popupMContactNo" name="popupMContactNo" />
+            <label for="popupMOccupation">Occupation:</label>
+            <input type="text" id="popupMOccupation" name="popupMOccupation" />
+        </div>
+        <hr />
+        <h1>Father's Details</h1>
+        <div class="form-group">
+
+
+            <label for="popupFName">Name:</label>
+            <input type="text" id="popupFName" name="popupFName" />
+            <label for="popupFAddress">Address:</label>
+            <input type="text" id="popupFAddress" name="popupFAddress" />
+        </div>
+        <div class="form-group">
+
+
+            <label for="popupFContactNo">Contact No:</label>
+            <input type="number" id="popupFContactNo" name="popupFContactNo" />
+            <label for="popupFOccupation">Occupation:</label>
+            <input type="text" id="popupFOccupation" name="popupFOccupation" />
+        </div>
+        <hr />
+        <h1>Employee's Details</h1>
+        <div class="form-group">         
+
+            <label for="popupEName">Name:</label>
+            <input type="text" id="popupEName" name="popupEName" />
+            <label for="popupEAddress">Address:</label>
+            <input type="text" id="popupEAddress" name="popupEAddress" />
+        </div>
+        <div class="form-group">
+
+
+            <label for="popupEContactNo">Contact No:</label>
+            <input type="number" id="popupEContactNo" name="popupEContactNo" />
+           
+            <label for="popupEPosition">Position:</label>
+            <input type="text" id="popupEPosition" name="popupEPosition" />
+        </div>
+       
+        <hr/>
+        <h1>In Case Of Emergency Contact</h1>
+        <div class="form-group">
+
+
+            <label for="popupUName">Name:</label>
+            <input type="text" id="popupUName" name="popupUName" />
+            <label for="popupUAddress">Address:</label>
+            <input type="text" id="popupUAddress" name="popupUAddress" />
+        </div>
+        <div class="form-group">
+            <label for="popupUContactNo">Contact No:</label>
+            <input type="number" id="popupUContactNo" name="popupUContactNo" />
+            <label for="popupUOccupation">Occupation:</label>
+            <input type="text" id="popupUOccupation" name="popupUOccupation" />
+        </div>
+        <div class="form-group">
+            <label for="popupRelation">Relation:</label>
+            <input type="text" id="popupURelation" name="popupUContactNo" />
+
+        </div>
+        <div class="text-end">
+            <button class="btn btn-primary" name="AddCustomerBTN" onclick="saveCustomer();">Create</button>
+        </div>
+    </form>
+   
+</body>
+<script>
+    //function saveCustomer() {
+    //    var formData = $('#RecordForm').serialize();
+
+    //    $.ajax({
+    //        url: '/Customer/Create',
+    //        type: 'POST',
+    //        data: formData,
+    //        success: function () {
+    //            alert("Customer added successfully.");
+    //            // Handle success if needed
+    //        },
+    //        error: function () {
+    //            alert("Error occurred while adding the customer.");
+    //        }
+    //    });
+    //}
+    function saveCustomer() {
+
+       
+        var name = $('#popupName').val();
+        var gender = $('#popupGender').val();
+        var dateOfBirth = $('#popupDateOfBirth').val();
+        var maritalStatus = $('#popupMaritalStatus').val();
+        var children = $('#popupChildren').val();
+        var contactNo = $('#popupContactNo').val();
+        var tenancyBegan = $('#popupTenancyBegan').val();
+        var nationality = $('#popupNationality').val();
+        var homeTown = $('#popupHomeTown').val();
+        var occupation = $('#popupOccupation').val();
+        var mName = $('#popupMName').val();
+        var mAddress = $('#popupMAddress').val();
+        var mContactNo = $('#popupMContactNo').val();
+        var mOccupation = $('#popupMOccupation').val();
+        var fName = $('#popupFName').val();
+        var fAddress = $('#popupFAddress').val();
+        var fContactNo = $('#popupFContactNo').val();
+        var fOccupation = $('#popupFOccupation').val();
+        var eName = $('#popupEName').val();
+        var eAddress = $('#popupEAddress').val();
+        var eContactNo = $('#popupEContactNo').val();
+        var ePosition = $('#popupEPosition').val();
+        var uName = $('#popupUName').val();
+        var uAddress = $('#popupUAddress').val();
+        var uContactNo = $('#popupUContactNo').val();
+        var uOccupation = $('#popupUOccupation').val();
+        var relation = $('#popupURelation').val();
+
+       
+        //if (!name || !gender || !dateOfBirth || !maritalStatus || !children || !contactNo || !tenancyBegan || !nationality || !homeTown || !occupation || !mName || !mAddress || !mContactNo || !mOccupation || !fName || !fAddress || !fContactNo || !fOccupation || !eName || !eAddress || !eContactNo || !ePosition || !uName || !uAddress || !uContactNo || !uOccupation || !relation) {
+        //    if (!name) alert('Please enter Name.');
+        //    if (!gender) alert('Please enter Gender.');
+        //    if (!dateOfBirth) alert('Please enter Date of Birth.');
+        //    if (!maritalStatus) alert('Please enter Marital Status.');
+        //    if (!children) alert('Please enter Children.');
+        //    if (!contactNo) alert('Please enter Contact No.');
+        //    if (!tenancyBegan) alert('Please enter Tenancy Began.');
+        //    if (!nationality) alert('Please enter Nationality.');
+        //    if (!homeTown) alert('Please enter HomeTown.');
+        //    if (!occupation) alert('Please enter Occupation.');
+        //    if (!mName) alert("Please enter Mother's Name.");
+        //    if (!mAddress) alert("Please enter Mother's Address.");
+        //    if (!mContactNo) alert("Please enter Mother's Contact No.");
+        //    if (!mOccupation) alert("Please enter Mother's Occupation.");
+        //    if (!fName) alert("Please enter Father's Name.");
+        //    if (!fAddress) alert("Please enter Father's Address.");
+        //    if (!fContactNo) alert("Please enter Father's Contact No.");
+        //    if (!fOccupation) alert("Please enter Father's Occupation.");
+        //    if (!eName) alert("Please enter Employee's Name.");
+        //    if (!eAddress) alert("Please enter Employee's Address.");
+        //    if (!eContactNo) alert("Please enter Employee's Contact No.");
+        //    if (!ePosition) alert("Please enter Employee's Position.");
+        //    if (!uName) alert("Please enter Emergency Contact Name.");
+        //    if (!uAddress) alert("Please enter Emergency Contact Address.");
+        //    if (!uContactNo) alert("Please enter Emergency Contact No.");
+        //    if (!uOccupation) alert("Please enter Emergency Contact Occupation.");
+        //    if (!relation) alert("Please enter Relation.");
+        //    return;
+        //}
+        alert(gender);
+        $.ajax({
+            url: '/Customer/Create',
+            type: 'POST',
+            data: {
+                
+                _DateOfBirth: dateOfBirth,
+                _MaritalStatus: maritalStatus,
+                _Children: children,
+                _ContactNo: contactNo,
+                _TenancyBegan: tenancyBegan,
+                _Nationality: nationality,
+                _HomeTown: homeTown,
+                _Occupation: occupation,
+                _MName: mName,
+                _MAddress: mAddress,
+                _MContactNo: mContactNo,
+                _MOccupation: mOccupation,
+                _FName: fName,
+                _FAddress: fAddress,
+                _FContactNo: fContactNo,
+                _FOccupation: fOccupation,
+                _EName: eName,
+                _EAddress: eAddress,
+                _EContactNo: eContactNo,
+                _EPosition: ePosition,
+                _UName: uName,
+                _UAddress: uAddress,
+                _UContactNo: uContactNo,
+                _UOccupation: uOccupation,
+                _URelation: relation,
+                
+            },
+            success: function () {
+                alert("Customer added successfully.");
+                // Handle success if needed
+            },
+            error: function () {
+                
+                alert("Error occurred while adding the customer.");
+            }
+        });
+        //$.ajax({
+            
+        //    url: '/Customer/Update',
+        //    type: 'POST',
+        //    dataType: 'json',
+        //    contentType: 'application/json',           
+        //    data: {
+        //        _Name: name
+        //        //_Gender: gender,
+        //        //_DateOfBirth: dateOfBirth,
+        //        //_MaritalStatus: maritalStatus,
+        //        //_Children: children,
+        //        //_ContactNo: contactNo,
+        //        //_TenancyBegan: tenancyBegan,
+        //        //_Nationality: nationality,
+        //        //_HomeTown: homeTown,
+        //        //_Occupation: occupation,
+        //        //_MName: mName,
+        //        //_MAddress: mAddress,
+        //        //_MContactNo: mContactNo,
+        //        //_MOccupation: mOccupation,
+        //        //_FName: fName,
+        //        //_FAddress: fAddress,
+        //        //_FContactNo: fContactNo,
+        //        //_FOccupation: fOccupation,
+        //        //_EName: eName,
+        //        //_EAddress: eAddress,
+        //        //_EContactNo: eContactNo,
+        //        //_EPosition: ePosition,
+        //        //_UName: uName,
+        //        //_UAddress: uAddress,
+        //        //_UContactNo: uContactNo,
+        //        //_UOccupation: uOccupation,
+        //        //_URelation: relation
+        //    },
+        //    success: function () {
+
+        //    },
+        //    error: function () {
+             
+        //    }
+        //});
+    }
+
+</script>
+

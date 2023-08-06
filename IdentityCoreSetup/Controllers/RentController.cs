@@ -24,14 +24,14 @@ namespace IdentityCoreSetup.Controllers
         }
 
         [HttpPost]
-        public JsonResult Create(Rent Rent)
-        {
-            var customer = CustomerServices.GetCustomerById(Rent._CustomerId);
-            Rent._CustomerName = customer._Name;
-            RentServices.CreateRent(Rent);
-            return new JsonResult("Rent Added");
+        //public JsonResult Create(Rent Rent)
+        //{
+        //    var customer = CustomerServices.GetCustomerById(Rent._CustomerId);
+        //    Rent._CustomerName = customer._Name;
+        //    RentServices.CreateRent(Rent);
+        //    return new JsonResult("Rent Added");
 
-        }
+        //}
 
         public JsonResult Delete(int id)
         {

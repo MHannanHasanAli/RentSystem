@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityCoreSetup.Controllers
 {
-    [Authorize(Roles = "Admin")]
+
     public class CustomerController : Controller
     {
         CustomerServices CustomerServices = new CustomerServices();
@@ -15,69 +15,72 @@ namespace IdentityCoreSetup.Controllers
         {
             return View();
         }
-      
-        
-
-        public JsonResult Deadlines()
+        public IActionResult CustomerForm()
         {
-            List<Customer> DeadlineCustomers = new List<Customer>();
-            var customers = CustomerServices.GetCustomers();
-            var todayDate = DateTime.Today;
+            return View();
+        }
+
+
+        //public JsonResult Deadlines()
+        //{
+        //    List<Customer> DeadlineCustomers = new List<Customer>();
+        //    var customers = CustomerServices.GetCustomers();
+        //    var todayDate = DateTime.Today;
             
            
-            foreach (var customer in customers)
-            {
-                if (customer._TypeOfRent == "annually")
-                {
-                    var givenDate = customer._NextDueDate;
+            //foreach (var customer in customers)
+            //{
+            //    if (customer._TypeOfRent == "annually")
+            //    {
+            //        var givenDate = customer._NextDueDate;
 
-                    var daysDifference = (givenDate.Date - todayDate).Days;
+            //        var daysDifference = (givenDate.Date - todayDate).Days;
 
-                    if (daysDifference <= 90 && daysDifference >= 0)
-                    {
-                        DeadlineCustomers.Add(customer);
+            //        if (daysDifference <= 90 && daysDifference >= 0)
+            //        {
+            //            DeadlineCustomers.Add(customer);
 
-                    }
-                }
-                else
-                {
-                    var givenDate = customer._NextDueDate;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        var givenDate = customer._NextDueDate;
 
-                    var daysDifference = (givenDate.Date - todayDate).Days;
+            //        var daysDifference = (givenDate.Date - todayDate).Days;
 
-                    if (daysDifference <= 5 && daysDifference >= 0)
-                    {
-                        DeadlineCustomers.Add(customer);
+            //        if (daysDifference <= 5 && daysDifference >= 0)
+            //        {
+            //            DeadlineCustomers.Add(customer);
 
-                    }
-                }
-            }
+            //        }
+            //    }
+            //}
 
 
-            return new JsonResult(DeadlineCustomers);
+        //    return new JsonResult(DeadlineCustomers);
             
-        }
-        public JsonResult Defaulter()
-        {
-            List<Customer> DefaultCustomers = new List<Customer>();
-            var customers = CustomerServices.GetCustomers();
-            var todayDate = DateTime.Today;
+        //}
+        //public JsonResult Defaulter()
+        //{
+        //    List<Customer> DefaultCustomers = new List<Customer>();
+        //    var customers = CustomerServices.GetCustomers();
+        //    var todayDate = DateTime.Today;
 
 
-            foreach (var customer in customers)
-            {
-                var givenDate = customer._NextDueDate;               
+        //    foreach (var customer in customers)
+        //    {
+        //        var givenDate = customer._NextDueDate;               
 
-                if (todayDate > givenDate)
-                {
-                    DefaultCustomers.Add(customer) ;
-                }
-            }
+        //        if (todayDate > givenDate)
+        //        {
+        //            DefaultCustomers.Add(customer) ;
+        //        }
+        //    }
 
 
-            return new JsonResult(DefaultCustomers);
+        //    return new JsonResult(DefaultCustomers);
 
-        }
+        //}
         public JsonResult CustomerIndex()
         {
             var data = CustomerServices.GetCustomers();
@@ -87,8 +90,19 @@ namespace IdentityCoreSetup.Controllers
         [HttpPost]
         public JsonResult Create(Customer Customer)
         {
-            CustomerServices.CreateCustomer(Customer);
-            return new JsonResult("Customer Added");
+            if (ModelState.IsValid)
+            {
+                CustomerServices.CreateCustomer(Customer);
+                return new JsonResult("Customer Added");
+            }
+            else
+            {
+                var errorMessage = ModelState.Values.SelectMany(v => v.Errors)
+                           .Select(e => e.ErrorMessage)
+                           .FirstOrDefault();
+
+                return new JsonResult("Customer not Added: " + errorMessage);
+            }
 
         }
 
@@ -112,7 +126,7 @@ namespace IdentityCoreSetup.Controllers
         public JsonResult UpdatethroughRent(int id, DateTime Nextdate)
         {
             var customer = CustomerServices.GetCustomerById(id);
-            customer._NextDueDate = Nextdate;
+            //customer._NextDueDate = Nextdate;
             CustomerServices.UpdateCustomer(customer);
             return new JsonResult("Record Updated");
         }

@@ -6,15 +6,15 @@ namespace IdentityCoreSetup.Services
     public class CustomerServices
     {
         
-        public List<string> GetCustomerNames()
-        {
-            using (var context = new ApplicationDbContext())
-            {
-                var data = context.customers.Select(c => c._Name).ToList();
-                data.Reverse();
-                return data;
-            }
-        }
+        //public List<string> GetCustomerNames()
+        //{
+        //    using (var context = new ApplicationDbContext())
+        //    {
+        //        var data = context.customers.Select(c => c._Name).ToList();
+        //        data.Reverse();
+        //        return data;
+        //    }
+        //}
         public List<Customer> GetCustomers()
         {
             using (var context = new ApplicationDbContext())

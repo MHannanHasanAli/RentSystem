@@ -4,6 +4,7 @@ using IdentityCoreSetup.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IdentityCoreSetup.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230806070233_Reboot")]
+    partial class Reboot
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,7 +104,27 @@ namespace IdentityCoreSetup.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("_Id"));
 
-                    b.Property<string>("_Gender")
+                    b.Property<string>("_Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_ContactNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("_NextDueDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("_TotalRent")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("_TypeOfRent")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("_Id");
