@@ -3,300 +3,6 @@
 }
 
 <style>
-    .form-group {
-        display: flex;
-        margin-bottom: 10px;
-    }
-
-        .form-group label {
-            width: 150px;
-            margin-right: 10px;
-            text-align: right;
-        }
-
-        .form-group input {
-            flex: 1;
-        }
-
-    /* Add any additional styling here */
-</style>
-
-<body>
-    <h2>Customer Information Form</h2>
-    <form id="Record Form">
-        <div class="form-group">
-            <label for="popupName">Name:</label>
-            <input type="text" id="popupName" name="popupName" required />
-            <label for="popupGender">Gender:</label>
-            <input type="text" id="popupGender" name="popupGender" />
-        </div>
-
-        <div class="form-group">
-            <label for="popupDateOfBirth">Date of Birth:</label>
-            <input type="date" id="popupDateOfBirth" name="popupDateOfBirth" />
-            <label for="popupMaritalStatus">Marital Status:</label>
-            <input type="text" id="popupMaritalStatus" name="popupMaritalStatus" />
-        </div>
-
-        <div class="form-group">
-            <label for="popupChildren">Children:</label>
-            <input type="number" id="popupChildren" name="popupChildren" />
-
-            <label for="popupContactNo">Contact No:</label>
-            <input type="number" id="popupContactNo" name="popupContactNo" />
-        </div>
-        <div class="form-group">
-            <label for="popupTenancyBegan">Tenancy Began:</label>
-            <input type="date" id="popupTenancyBegan" name="popupTenancyBegan" />
-
-            <label for="popupNationality">Nationality:</label>
-            <input type="text" id="popupNationality" name="popupNationality" />
-        </div>
-        <div class="form-group">
-            <label for="popupHomeTown">HomeTown:</label>
-            <input type="text" id="popupHomeTown" name="popupHomeTown" />
-
-            <label for="popupOccupation">Occupation:</label>
-            <input type="text" id="popupOccupation" name="popupOccupation" />
-        </div>
-        <hr />
-        <h1>Mother's Details</h1>
-        <div class="form-group">
-
-            <label for="popupMName">Name:</label>
-            <input type="text" id="popupMName" name="popupMName" />
-            <label for="popupMAddress">Address:</label>
-            <input type="text" id="popupMAddress" name="popupMAddress" />
-        </div>
-        <div class="form-group">
-
-            <label for="popupMContactNo">Contact No:</label>
-            <input type="number" id="popupMContactNo" name="popupMContactNo" />
-            <label for="popupMOccupation">Occupation:</label>
-            <input type="text" id="popupMOccupation" name="popupMOccupation" />
-        </div>
-        <hr />
-        <h1>Father's Details</h1>
-        <div class="form-group">
-
-
-            <label for="popupFName">Name:</label>
-            <input type="text" id="popupFName" name="popupFName" />
-            <label for="popupFAddress">Address:</label>
-            <input type="text" id="popupFAddress" name="popupFAddress" />
-        </div>
-        <div class="form-group">
-
-
-            <label for="popupFContactNo">Contact No:</label>
-            <input type="number" id="popupFContactNo" name="popupFContactNo" />
-            <label for="popupFOccupation">Occupation:</label>
-            <input type="text" id="popupFOccupation" name="popupFOccupation" />
-        </div>
-        <hr />
-        <h1>Employee's Details</h1>
-        <div class="form-group">
-
-            <label for="popupEName">Name:</label>
-            <input type="text" id="popupEName" name="popupEName" />
-            <label for="popupEAddress">Address:</label>
-            <input type="text" id="popupEAddress" name="popupEAddress" />
-        </div>
-        <div class="form-group">
-
-
-            <label for="popupEContactNo">Contact No:</label>
-            <input type="number" id="popupEContactNo" name="popupEContactNo" />
-
-            <label for="popupEPosition">Position:</label>
-            <input type="text" id="popupEPosition" name="popupEPosition" />
-        </div>
-
-        <hr />
-        <h1>In Case Of Emergency Contact</h1>
-        <div class="form-group">
-
-
-            <label for="popupUName">Name:</label>
-            <input type="text" id="popupUName" name="popupUName" />
-            <label for="popupUAddress">Address:</label>
-            <input type="text" id="popupUAddress" name="popupUAddress" />
-        </div>
-        <div class="form-group">
-            <label for="popupUContactNo">Contact No:</label>
-            <input type="number" id="popupUContactNo" name="popupUContactNo" />
-            <label for="popupUOccupation">Occupation:</label>
-            <input type="text" id="popupUOccupation" name="popupUOccupation" />
-        </div>
-        <div class="form-group">
-            <label for="popupRelation">Relation:</label>
-            <input type="text" id="popupURelation" name="popupUContactNo" />
-
-        </div>
-        <div class="text-end">
-            <button class="btn btn-primary" id="AddCustomerBTN" onclick="saveCustomer();">Create</button>
-        </div>
-    </form>
-
-</body>
-<script>
-    function saveCustomer() {
-        alert("Save Customer");
-        //var customerData = {
-        //    _Name: $('#popupName').val(),
-        //    _Gender: $('#popupGender').val(),
-        //    _DateOfBirth: $('#popupDateOfBirth').val(),
-        //    _MaritalStatus: $('#popupMaritalStatus').val(),
-        //    _Children: $('#popupChildren').val(),
-        //    _ContactNo: $('#popupContactNo').val(),
-        //    _TenancyBegan: $('#popupTenancyBegan').val(),
-        //    _Nationality: $('#popupNationality').val(),
-        //    _HomeTown: $('#popupHomeTown').val(),
-        //    _Occupation: $('#popupOccupation').val(),
-        //    _MName: $('#popupMName').val(),
-        //    _MAddress: $('#popupMAddress').val(),
-        //    _MContactNo: $('#popupMContactNo').val(),
-        //    _MOccupation: $('#popupMOccupation').val(),
-        //    _FName: $('#popupFName').val(),
-        //    _FAddress: $('#popupFAddress').val(),
-        //    _FContactNo: $('#popupFContactNo').val(),
-        //    _FOccupation: $('#popupFOccupation').val(),
-        //    _EName: $('#popupEName').val(),
-        //    _EAddress: $('#popupEAddress').val(),
-        //    _EContactNo: $('#popupEContactNo').val(),
-        //    _EPosition: $('#popupEPosition').val(),
-        //    _UName: $('#popupUName').val(),
-        //    _UAddress: $('#popupUAddress').val(),
-        //    _UContactNo: $('#popupUContactNo').val(),
-        //    _UOccupation: $('#popupUOccupation').val(),
-        //    _URelation: $('#popupURelation').val(),
-        //    _TotalRent: null, // Replace with the actual value
-        //    _TypeOfRent: null, // Replace with the actual value
-        //    _NextDueDate: null // Replace with the actual value
-        //};
-        //console.log(customerData);
-        //$.ajax({
-        //    url: '/Customer/Create',
-        //    type: 'POST',
-        //    dataType: 'json',
-        //    contentType: 'application/json',
-        //    data: JSON.stringify(customerData),
-        //    success: function () {
-        //        // Handle success if needed
-        //    },
-        //    error: function (e) {
-        //        console.log(e);
-        //    }
-        //});
-        var name = $('#popupName').val();
-        alert(name);
-        var gender = $('#popupGender').val();
-        var dateOfBirth = $('#popupDateOfBirth').val();
-        var maritalStatus = $('#popupMaritalStatus').val();
-        var children = $('#popupChildren').val();
-        var contactNo = $('#popupContactNo').val();
-        var tenancyBegan = $('#popupTenancyBegan').val();
-        var nationality = $('#popupNationality').val();
-        var homeTown = $('#popupHomeTown').val();
-        var occupation = $('#popupOccupation').val();
-        var mName = $('#popupMName').val();
-        var mAddress = $('#popupMAddress').val();
-        var mContactNo = $('#popupMContactNo').val();
-        var mOccupation = $('#popupMOccupation').val();
-        var fName = $('#popupFName').val();
-        var fAddress = $('#popupFAddress').val();
-        var fContactNo = $('#popupFContactNo').val();
-        var fOccupation = $('#popupFOccupation').val();
-        var eName = $('#popupEName').val();
-        var eAddress = $('#popupEAddress').val();
-        var eContactNo = $('#popupEContactNo').val();
-        var ePosition = $('#popupEPosition').val();
-        var uName = $('#popupUName').val();
-        var uAddress = $('#popupUAddress').val();
-        var uContactNo = $('#popupUContactNo').val();
-        var uOccupation = $('#popupUOccupation').val();
-        var relation = $('#popupURelation').val();
-
-        //// Check if any field is empty
-        ////if (!name || !gender || !dateOfBirth || !maritalStatus || !children || !contactNo || !tenancyBegan || !nationality || !homeTown || !occupation || !mName || !mAddress || !mContactNo || !mOccupation || !fName || !fAddress || !fContactNo || !fOccupation || !eName || !eAddress || !eContactNo || !ePosition || !uName || !uAddress || !uContactNo || !uOccupation || !relation) {
-        ////    if (!name) alert('Please enter Name.');
-        ////    if (!gender) alert('Please enter Gender.');
-        ////    if (!dateOfBirth) alert('Please enter Date of Birth.');
-        ////    if (!maritalStatus) alert('Please enter Marital Status.');
-        ////    if (!children) alert('Please enter Children.');
-        ////    if (!contactNo) alert('Please enter Contact No.');
-        ////    if (!tenancyBegan) alert('Please enter Tenancy Began.');
-        ////    if (!nationality) alert('Please enter Nationality.');
-        ////    if (!homeTown) alert('Please enter HomeTown.');
-        ////    if (!occupation) alert('Please enter Occupation.');
-        ////    if (!mName) alert("Please enter Mother's Name.");
-        ////    if (!mAddress) alert("Please enter Mother's Address.");
-        ////    if (!mContactNo) alert("Please enter Mother's Contact No.");
-        ////    if (!mOccupation) alert("Please enter Mother's Occupation.");
-        ////    if (!fName) alert("Please enter Father's Name.");
-        ////    if (!fAddress) alert("Please enter Father's Address.");
-        ////    if (!fContactNo) alert("Please enter Father's Contact No.");
-        ////    if (!fOccupation) alert("Please enter Father's Occupation.");
-        ////    if (!eName) alert("Please enter Employee's Name.");
-        ////    if (!eAddress) alert("Please enter Employee's Address.");
-        ////    if (!eContactNo) alert("Please enter Employee's Contact No.");
-        ////    if (!ePosition) alert("Please enter Employee's Position.");
-        ////    if (!uName) alert("Please enter Emergency Contact Name.");
-        ////    if (!uAddress) alert("Please enter Emergency Contact Address.");
-        ////    if (!uContactNo) alert("Please enter Emergency Contact No.");
-        ////    if (!uOccupation) alert("Please enter Emergency Contact Occupation.");
-        ////    if (!relation) alert("Please enter Relation.");
-        ////    return;
-        ////}
-        //alert(name);
-        $.ajax({
-
-            url: '/Customer/Create',
-            type: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                _Name: name,
-                _Gender: gender,
-                _DateOfBirth: dateOfBirth,
-                _MaritalStatus: maritalStatus,
-                _Children: children,
-                _ContactNo: contactNo,
-                _TenancyBegan: tenancyBegan,
-                _Nationality: nationality,
-                _HomeTown: homeTown,
-                _Occupation: occupation,
-                _MName: mName,
-                _MAddress: mAddress,
-                _MContactNo: mContactNo,
-                _MOccupation: mOccupation,
-                _FName: fName,
-                _FAddress: fAddress,
-                _FContactNo: fContactNo,
-                _FOccupation: fOccupation,
-                _EName: eName,
-                _EAddress: eAddress,
-                _EContactNo: eContactNo,
-                _EPosition: ePosition,
-                _UName: uName,
-                _UAddress: uAddress,
-                _UContactNo: uContactNo,
-                _UOccupation: uOccupation,
-                _URelation: relation
-            }),
-            success: function () {
-
-            },
-            error: function (e) {
-                console.log(e);
-            }
-        });
-    }
-
-</script>
-
-
-@*<style>
     .card {
         margin-bottom: 20px;
     }
@@ -368,8 +74,8 @@
     }
 
   
-</style>*@
-@*<div class="row">
+</style>
+<div class="row">
     <div class="col-md-2">
         <h1>Customers</h1>
     </div>
@@ -384,51 +90,212 @@
 <nav id="paginationContainer">
     <ul id="pagination" class="pagination justify-content-center"></ul>
 </nav>
+<!-- Modal for Rent Card -->
+<div class="modal fade" id="createRentCardModal" tabindex="-1" role="dialog" aria-labelledby="createRentCardModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createRentCardModalLabel">Create Rent Card</h5>
+              
+                    @*<span aria-hidden="true">&times;</span>*@
+               
+            </div>
+            <div class="modal-body">
+                <form id="rentCardForm">
+                    <div class="form-group">
+                        <label for="_NameOfTenant">Name of Tenant</label>
+                        <input type="text" class="form-control" id="_NameOfTenant" name="_NameOfTenant" >
+                    </div><br />
+                    <div class="form-group">
+                        <label for="_BusinessPlace">Business Place</label>
+                        <input type="text" class="form-control" id="_BusinessPlace" name="_BusinessPlace" >
+                    </div><br />
+                    <div class="form-group">
+                        <label for="_ContactNo">Contact Number</label>
+                        <input type="text" class="form-control" id="_ContactNo" name="_ContactNo" >
+                    </div><br />
+                    <div class="form-group">
+                        <label for="_EmergencyName">Emergency Contact Name</label>
+                        <input type="text" class="form-control" id="_EmergencyName" name="_EmergencyName" >
+                    </div><br />
+                    <div class="form-group">
+                        <label for="_EmergencyTel">Emergency Contact Telephone</label>
+                        <input type="text" class="form-control" id="_EmergencyTel" name="_EmergencyTel" >
+                    </div><br />
+                    <div class="form-group">
+                        <label for="_NameOfLandlord">Name of Landlord</label>
+                        <input type="text" class="form-control" id="_NameOfLandlord" name="_NameOfLandlord" >
+                    </div><br />
+                    <div class="form-group">
+                        <label for="_AddressOfLandlord">Address of Landlord</label>
+                        <input type="text" class="form-control" id="_AddressOfLandlord" name="_AddressOfLandlord" >
+                    </div><br />
+                    <div class="form-group">
+                        <label for="_ContactOfLandlord">Contact of Landlord</label>
+                        <input type="text" class="form-control" id="_ContactOfLandlord" name="_ContactOfLandlord" >
+                    </div><br />
+                    <div class="form-group">
+                        <label for="_AgentName">Agent Name</label>
+                        <input type="text" class="form-control" id="_AgentName" name="_AgentName" >
+                    </div><br />
+                    <div class="form-group">
+                        <label for="_HouseNumber">House Number</label>
+                        <input type="text" class="form-control" id="_HouseNumber" name="_HouseNumber" >
+                    </div><br />
+                    <div class="form-group">
+                        <label for="_Locality">Locality</label>
+                        <input type="text" class="form-control" id="_Locality" name="_Locality" >
+                    </div><br />
+                    <div class="form-group">
+                        <label for="_TypeOfPremises">Type of Premises</label>
+                        <input type="text" class="form-control" id="_TypeOfPremises" name="_TypeOfPremises" >
+                    </div><br />
+                    <div class="form-group">
+                        <label for="_Commencement">Commencement Date</label>
+                        <input type="date" class="form-control" id="_Commencement" name="_Commencement" >
+                    </div><br />
+                    <div class="form-group">
+                        <label for="_RecoverableRent">Recoverable Rent</label>
+                        <input type="text" class="form-control" id="_RecoverableRent" name="_RecoverableRent" >
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModalRent();">Close</button>
+                <button type="button" class="btn btn-primary" id="createRentCardButton">Create Rent Card</button>
+                <button class="btn btn-warning" id="UpdateCardBTN" onclick="updateRentCard();" style="display:none">Update</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade modal" id="createCustomerWindow">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="text-info modal-title text-black" id="Customerheading">Add Customer</h1>
                 <button type="button" class="btn-close" aria-label="Close" onclick="closeModal();"></button>
-               
             </div>
             <div class="modal-body">
                 <div>
                     <form>
                         <div class="form-group">
-                            <input type="hidden" id="popupId" class="form-control" disabled="disabled" autocomplete="off" />
+                            <label for="_popupName">Name:</label>
+                            <input type="text" class="form-control" id="_popupName" name="_popupName"  />
+                        </div><br />
+                        <div class="form-group">
+                            <label for="_popupGender">Gender:</label>
+                            <input type="text" class="form-control" id="_popupGender" name="_popupGender" />
+                        </div><br />
+
+                        <div class="form-group">
+                            <label for="_popupDateOfBirth">Date of Birth:</label>
+                            <input type="date" class="form-control" id="_popupDateOfBirth" name="_popupDateOfBirth" />
+                        </div><br /><div class="form-group">
+                            <label for="_popupMaritalStatus">Marital Status:</label>
+                            <input type="text" class="form-control" id="_popupMaritalStatus" name="_popupMaritalStatus" />
+                        </div><br />
+
+                        <div class="form-group">
+                            <label for="_popupChildren">Children:</label>
+                            <input type="number" class="form-control" id="_popupChildren" name="_popupChildren" />
+                        </div><br /><div class="form-group">
+                            <label for="_popupContactNo">Contact No:</label>
+                            <input type="number" class="form-control" id="_popupContactNo" name="_popupContactNo" />
+                        </div><br />
+                        <div class="form-group">
+                            <label for="_popupTenancyBegan">Tenancy Began:</label>
+                            <input type="date" class="form-control" id="_popupTenancyBegan" name="_popupTenancyBegan" />
+                        </div><br /><div class="form-group">
+                            <label for="_popupNationality">Nationality:</label>
+                            <input type="text" class="form-control" id="_popupNationality" name="_popupNationality" />
+                        </div><br />
+                        <div class="form-group">
+                            <label for="_popupHomeTown">HomeTown:</label>
+                            <input type="text" class="form-control" id="_popupHomeTown" name="_popupHomeTown" />
+                        </div><br /><div class="form-group">
+                            <label for="_popupOccupation">Occupation:</label>
+                            <input type="text" class="form-control" id="_popupOccupation" name="_popupOccupation" />
                         </div>
+                        <hr />
+                        <h1>Mother's Details</h1>
                         <div class="form-group">
-                            <label>Name</label>
-                            <input placeholder="Name" id="popupName" class="form-control" autocomplete="off" />
+                            <label for="_popupMName">Name:</label>
+                            <input type="text" class="form-control" id="_popupMName" name="_popupMName" />
                         </div><br />
                         <div class="form-group">
-                            <label>Address</label>
-                            <input placeholder="Address" id="popupAddress" class="form-control" autocomplete="off"/>
+                            <label for="_popupMAddress">Address:</label>
+                            <input type="text" class="form-control" id="_popupMAddress" name="_popupMAddress" />
                         </div><br />
                         <div class="form-group">
-                            <label>Contact Number</label>
-                            <input type="tel" placeholder="Phone Number" id="popupContactNo" class="form-control" autocomplete="off"/>
+                            <label for="_popupMContactNo">Contact No:</label>
+                            <input type="number" class="form-control" id="_popupMContactNo" name="_popupMContactNo" />
                         </div><br />
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" placeholder="E-mail" id="popupEmail" class="form-control" autocomplete="off"/>
+                            <label for="_popupMOccupation">Occupation:</label>
+                            <input type="text" class="form-control" id="_popupMOccupation" name="_popupMOccupation" />
+                        </div>
+                        <hr />
+                        <h1>Father's Details</h1>
+                        <div class="form-group">
+                            <label for="_popupFName">Name:</label>
+                            <input type="text" class="form-control" id="_popupFName" name="_popupFName" />
                         </div><br />
                         <div class="form-group">
-                            <label>Total Rent</label>
-                            <input type="number" placeholder="$" id="popupTotalRent" class="form-control" autocomplete="off" />
+                            <label for="_popupFAddress">Address:</label>
+                            <input type="text" class="form-control" id="_popupFAddress" name="_popupFAddress" />
                         </div><br />
                         <div class="form-group">
-                            <label>Rent Type</label>
-                            <select class="form-control" name="project" id="popuprentType" autocomplete="off">
-                                <option class="dropdown-item" value="monthly">Monthly</option>
-                                <option class="dropdown-item" value="annually">Annually</option>
-                            </select>
+                            <label for="_popupFContactNo">Contact No:</label>
+                            <input type="number" class="form-control" id="_popupFContactNo" name="_popupFContactNo" />
+                        </div><br />
+                        <div class="form-group">
+                            <label for="_popupFOccupation">Occupation:</label>
+                            <input type="text" class="form-control" id="_popupFOccupation" name="_popupFOccupation" />
+                        </div>
+                        <hr />
+                        <h1>Employee's Details</h1>
+                        <div class="form-group">
+                            <label for="_popupEName">Name:</label>
+                            <input type="text" class="form-control" id="_popupEName" name="_popupEName" />
+                        </div><br />
+                        <div class="form-group">
+                            <label for="_popupEAddress">Address:</label>
+                            <input type="text" class="form-control" id="_popupEAddress" name="_popupEAddress" />
+                        </div><br />
+                        <div class="form-group">
+                            <label for="_popupEContactNo">Contact No:</label>
+                            <input type="number" class="form-control" id="_popupEContactNo" name="_popupEContactNo" />
+                        </div><br />
+                        <div class="form-group">
+                            <label for="_popupEPosition">Position:</label>
+                            <input type="text" class="form-control" id="_popupEPosition" name="_popupEPosition" />
+                        </div>
+                        <hr />
+                        <h1>In Case Of Emergency Contact</h1>
+                        <div class="form-group">
+                            <label for="_popupUName">Name:</label>
+                            <input type="text" class="form-control" id="_popupUName" name="_popupUName" />
+                        </div><br />
+                        <div class="form-group">
+                            <label for="_popupUAddress">Address:</label>
+                            <input type="text" class="form-control" id="_popupUAddress" name="_popupUAddress" />
+                        </div><br />
+                        <div class="form-group">
+                            <label for="_popupUContactNo">Contact No:</label>
+                            <input type="number" class="form-control" id="_popupUContactNo" name="_popupUContactNo" />
+                        </div><br />
+                        <div class="form-group">
+                            <label for="_popupUOccupation">Occupation:</label>
+                            <input type="text" class="form-control" id="_popupUOccupation" name="_popupUOccupation" />
+                        </div><br />
+                        <div class="form-group">
+                            <label for="_popupURelation">Relation:</label>
+                            <input type="text" class="form-control" id="_popupURelation" name="_popupURelation" />
                         </div>
                     </form>
                 </div>
-
-                
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" id="AddCustomerBTN" onclick="saveCustomer();">Create</button>
@@ -438,105 +305,47 @@
         </div>
     </div>
 </div>
-<div class="modal fade modal" id="createCustomerWindowRent">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="text-info modal-title text-black" id="CustomerRentheading">Collect rent</h1>
-                <button type="button" class="btn-close" aria-label="Close" onclick="closeModalRent();"></button>
-         
-            </div>
-            <div class="modal-body">
-                <div>
-                    <form>
-                        <div class="form-group">
-                            <input type="hidden" id="popupId" class="form-control" disabled="disabled" autocomplete="off" />
-                        </div>                     
-                        <div class="form-group">
-                            <h1 id ="popupAmount"></h1>
-                        </div><br />
-                        <div class="form-group">
-                            <label>Payment Method</label>
-                            <select class="form-control" name="project" id="popupPaymentType" autocomplete="off">
-                                <option class="dropdown-item" value="Cash">Cash</option>
-                                <option class="dropdown-item" value="Online">Online</option>
-                            </select>
-                        </div><br />
-                        <div class="form-group">
-                            <label>Payment Date</label>
-                            <input type="date" placeholder="$" id="popupPaymentDate" class="form-control" autocomplete="off" />
-                        </div><br />
-                        <div class="form-group">
-                            <label>Next Due Date</label>
-                            <input type="date" placeholder="$" id="popupDueDate" class="form-control" autocomplete="off" />
-                        </div>
-                    </form>
-                </div>
 
 
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" id="AddCustomerBTN" onclick="saveRent();">Add Payment</button>
-                <button class="btn btn-warning" id="UpdateCustomerBTN" onclick="updateCustomer();" style="display:none">Update</button>
-                <button class="btn btn-danger" id="CloseCustomerBTN" onclick="closeModalRent();" style="display:none">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade modal" id="createCustomerWindowDetails">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="text-info modal-title text-black" id="CustomerheadingDetails">Customer Details</h1>
-                <button type="button" class="btn-close" aria-label="Close" onclick="closeModalDetails();"></button>
-          
-            </div>
-            <div class="modal-body">
-                <div>
-                    <form>
-                        <div class="form-group">
-                            <input type="hidden" id="popupId" class="form-control" disabled="disabled" autocomplete="off" />
-                        </div>
-                        <div class="form-group">
-                            <label id ="popupNameDetails"></label>
-                           
-                        </div><br />
-                        <div class="form-group">
-                            <label id="popupAddressDetails">Address</label>
-                        </div><br />
-                        <div class="form-group">
-                            <label id="popupContactNoDetails">Contact Number</label>
-                        </div><br />
-                        <div class="form-group">
-                            <label id="popupEmailDetails">Email</label>
-                        </div><br />
-                        <div class="form-group">
-                            <label id="popupTotalRentDetails">Total Rent</label>
-                           
-                        </div><br />
-                        <div class="form-group">
-                            <label id="popuprentTypeDetails">Rent Type</label>
-
-                        </div><br />
-                        <div class="form-group">
-                            <label id="popupDueDateDetails">Rent Type</label>
-
-                        </div>
-                    </form>
-                </div>
-
-
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-danger" id="CloseCustomerBTN" onclick="closeModalDetails();">Close</button>
-            </div>
-        </div>
-    </div>
-</div>*@
-@*<script>
+<script>
     $(document).ready(function () {
-         CustomerShow();
-    })
+        CustomerShow();
+        $("#createRentCardButton").click(function () {
+            var formData = {
+                _NameOfTenant: $("#_NameOfTenant").val(),
+                _BusinessPlace: $("#_BusinessPlace").val(),
+                _ContactNo: $("#_ContactNo").val(),
+                _EmergencyName: $("#_EmergencyName").val(),
+                _EmergencyTel: $("#_EmergencyTel").val(),
+                _NameOfLandlord: $("#_NameOfLandlord").val(),
+                _AddressOfLandlord: $("#_AddressOfLandlord").val(),
+                _ContactOfLandlord: $("#_ContactOfLandlord").val(),
+                _AgentName: $("#_AgentName").val(),
+                _HouseNumber: $("#_HouseNumber").val(),
+                _Locality: $("#_Locality").val(),
+                _TypeOfPremises: $("#_TypeOfPremises").val(),
+                _Commencement: $("#_Commencement").val(),
+                _RecoverableRent: $("#_RecoverableRent").val(),
+                _CustomerId: customerid
+            };
+
+            $.ajax({
+                url: "/RentCard/CreateRentCard", // Update with the actual controller and action names
+                type: "POST",
+                data: formData,
+                success: function (response) {
+                    // Handle success (e.g., show a success message)
+                    console.log("Rent card created successfully.");
+                    // Close the modal
+                    $("#createRentCardModal").modal("hide");
+                },
+                error: function (error) {
+                    // Handle error (e.g., show an error message)
+                    console.error("Error creating rent card:", error);
+                }
+            });
+        });
+    });
 
     var customerid;
     var Totalrent;
@@ -544,13 +353,28 @@
     function createCustomerRent(id,rent) {
         customerid = id;
         Totalrent = rent;
+        $.ajax({
+            url: '/Customer/CardStatus?id=' + id,
+            type: 'GET',
 
-        cleartextboxRent(rent);
-        $('#createCustomerWindowRent').modal('show');
+            success: function (data) {
+                if (data === "Filled"){
+                    alert("Rent Card already filled");
+                }
+                else{
+                    cleartextboxRent(rent);
+                    $('#createRentCardModal').modal('show');
+                }
+            },
+            error: function () {
+                // Handle error
+            }
+        });
+        
     }
     function closeModalRent() {
 
-        $('#createCustomerWindowRent').modal('hide');
+        $('#createRentCardModal').modal('hide');
     }
     function cleartextboxRent(rent) {
         //$('#popupId').val('');
@@ -559,54 +383,6 @@
         $('#popupPaymentDate').val('');
     }
 
-    function CustomerExport() {
-        var startingDate = $('#startingDate').val();
-        var endingDate = $('#endingDate').val();
-
-        if (startingDate === "" || endingDate === "") {
-            alert("Please enter both start date and end date.");
-            return;
-        }
-
-        $.ajax({
-            url: '/Customer/CustomerExport',
-            type: 'GET',
-            dataType: 'json',
-            contentType: 'application/json;charset=utf-8;',
-            data: {
-                startingDate: startingDate,
-                endingDate: endingDate
-            },
-            success: function (result) {
-                var object = '';
-                var count = 0;
-                $.each(result, function (index, item) {
-                    object += '<div class="col-md-3">';
-                    object += '<div class="card">';
-                    object += '<div class="card-body">';
-                    object += '<div class="d-flex align-items-center">';
-                    object += '<img src="/images/man.png" style="width: 30px; height: 30px;" />';
-                    object += '<h5 class="card-title">' + item._Name + '</h5>';
-                    object += '</div>';
-                    object += '<p class="card-text">' + item._Email + '</p>';
-                    object += '<a href="#" class="btn btn-primary" onclick="viewCustomer(' + item._id + ')"> + Details</a>';
-                    object += '<a href="#" id="IconButtonEdit" class="btn btn-primary fa-solid" onclick="editCustomer(' + item._id + ')"><i class="fa fa-pen" aria-hidden="true"></i></a>';
-                    object += '<a href="#"  id="IconButtonDel" class="btn btn-danger fa-solid" onclick="deleteCustomer(' + item._id + ' )"><i class="fa fa-trash" aria-hidden="true"></i></a>';
-                    object += '</div>';
-                    object += '</div>';
-                    object += '</div>';
-                    count++;
-                });
-                $('#CustomerCardView').html(object);
-                if (count > 16) {
-                    pagination();
-                }
-            },
-            error: function () {
-
-            }
-        });
-    }
     //Index Customer
     function CustomerShow() {
        
@@ -627,8 +403,8 @@
                     object += '<img src="/images/man.png" style="width: 30px; height: 30px;" />';
                     object += '<h5 class="card-title">'+ item._Name +'</h5>';
                     object += '</div>';
-                    object += '<p class="card-text">' + item._Email + '</p>';
-                    object += '<a href="#" class="btn btn-primary" onclick="viewCustomer(' + item._Id + ')"> + Details</a>';
+                    object += '<p class="card-text">' + item._Gender + '</p>';
+                    object += '<a href="#" class="btn btn-primary" onclick="editRentCard(' + item._Id + ')"> Card </a>';
                     object += '<a href="#" id="IconButtonRent" class="btn btn-success" onclick="createCustomerRent(' + item._Id + ', ' + item._TotalRent + ')">$</a>';
                     object += '<a href="#" id="IconButtonEdit" class="btn btn-primary fa-solid" onclick="editCustomer(' + item._Id + ')"><i class="fa fa-pen" aria-hidden="true"></i></a>';
                     object += '<a href="#"  id="IconButtonDel" class="btn btn-danger fa-solid" onclick="deleteCustomer(' + item._Id + ' )"><i class="fa fa-trash" aria-hidden="true"></i></a>';
@@ -762,33 +538,77 @@
         });
     }
     function saveCustomer() {
-        var name = $('#popupName').val();
-        var address = $('#popupAddress').val();
-        var contactNo = $('#popupContactNo').val();
-        var email = $('#popupEmail').val();
-        var TotalRent = $('#popupTotalRent').val();
-        var RentType = $('#popuprentType').val();
-        // Check if any field is empty
-        if (!name || !address || !contactNo || !email || !TotalRent || !RentType) {
-            alert('Please fill in all the fields.');
-            return;
-        }
+        var name = $('#_popupName').val();
+        var gender = $('#_popupGender').val();
+        var dateOfBirth = $('#_popupDateOfBirth').val();
+        var maritalStatus = $('#_popupMaritalStatus').val();
+        var children = $('#_popupChildren').val();
+        var contactNo = $('#_popupContactNo').val();
+        var tenancyBegan = $('#_popupTenancyBegan').val();
+        var nationality = $('#_popupNationality').val();
+        var homeTown = $('#_popupHomeTown').val();
+        var occupation = $('#_popupOccupation').val();
+        var mName = $('#_popupMName').val();
+        var mAddress = $('#_popupMAddress').val();
+        var mContactNo = $('#_popupMContactNo').val();
+        var mOccupation = $('#_popupMOccupation').val();
+        var eName = $('#_popupEName').val();
+        var eAddress = $('#_popupEAddress').val();
+        var eContactNo = $('#_popupEContactNo').val();
+        var ePosition = $('#_popupEPosition').val();
+        var fName = $('#_popupFName').val();
+        var fAddress = $('#_popupFAddress').val();
+        var fContactNo = $('#_popupFContactNo').val();
+        var fOccupation = $('#_popupFOccupation').val();
+        var uName = $('#_popupUName').val();
+        var uAddress = $('#_popupUAddress').val();
+        var uContactNo = $('#_popupUContactNo').val();
+        var uOccupation = $('#_popupUOccupation').val();
+        var relation = $('#_popupURelation').val();
+
+
+            
+        //if (!name || !gender || !dateOfBirth || !maritalStatus || !children || !contactNo || !tenancyBegan || !nationality || !homeTown || !occupation || !mName || !mAddress || !mContactNo || !mOccupation || !eName || !eAddress || !eContactNo || !ePosition || !fName || !fAddress || !fContactNo || !fOccupation || !uName || !uAddress || !uContactNo || !uOccupation || !relation || !address || !email || !TotalRent || !RentType) {
+        //    alert('Please fill in all the fields.');
+        //    return;
+        //}
 
         $.ajax({
             url: '/Customer/Create',
             type: 'POST',
             data: {
                 _Name: name,
-                _Address: address,
+                _Gender: gender,
+                _DateOfBirth: dateOfBirth,
+                _MaritalStatus: maritalStatus,
+                _Children: children,
                 _ContactNo: contactNo,
-                _Email: email,
-                _TotalRent: TotalRent,
-                _TypeOfRent: RentType
+                _TenancyBegan: tenancyBegan,
+                _Nationality: nationality,
+                _HomeTown: homeTown,
+                _Occupation: occupation,
+                _MName: mName,
+                _MAddress: mAddress,
+                _MContactNo: mContactNo,
+                _MOccupation: mOccupation,
+                _EName: eName,
+                _EAddress: eAddress,
+                _EContactNo: eContactNo,
+                _EPosition: ePosition,
+                _FName: fName,
+                _FAddress: fAddress,
+                _FContactNo: fContactNo,
+                _FOccupation: fOccupation,
+                _UName: uName,
+                _UAddress: uAddress,
+                _UContactNo: uContactNo,
+                _UOccupation: uOccupation,
+                _URelation: relation
             },
             success: function () {
                 cleartextbox();
-                CustomerShow();
                 closeModal();
+                CustomerShow();
             },
             error: function () {
                 // Handle error
@@ -812,6 +632,60 @@
 
 
     }
+    function updateRentCard() {
+        var id = $('#_popupId').val();
+        var nameOfTenant = $('#_NameOfTenant').val();
+        var businessPlace = $('#_BusinessPlace').val();
+        var contactNo = $('#_ContactNo').val();
+        var emergencyName = $('#_EmergencyName').val();
+        var emergencyTel = $('#_EmergencyTel').val();
+        var nameOfLandlord = $('#_NameOfLandlord').val();
+        var addressOfLandlord = $('#_AddressOfLandlord').val();
+        var contactOfLandlord = $('#_ContactOfLandlord').val();
+        var agentName = $('#_AgentName').val();
+        var houseNumber = $('#_HouseNumber').val();
+        var locality = $('#_Locality').val();
+        var typeOfPremises = $('#_TypeOfPremises').val();
+        var commencement = $('#_Commencement').val();
+        var recoverableRent = $('#_RecoverableRent').val();
+
+        // Perform validation on the  fields
+   
+
+        // Assuming you have a formatDate function to convert the date format
+        var formattedCommencement = commencement;
+
+        $.ajax({
+            url: '/RentCard/Update',
+            type: 'POST',
+            data: {
+                _Id: id,
+                _NameOfTenant: nameOfTenant,
+                _BusinessPlace: businessPlace,
+                _ContactNo: contactNo,
+                _EmergencyName: emergencyName,
+                _EmergencyTel: emergencyTel,
+                _NameOfLandlord: nameOfLandlord,
+                _AddressOfLandlord: addressOfLandlord,
+                _ContactOfLandlord: contactOfLandlord,
+                _AgentName: agentName,
+                _HouseNumber: houseNumber,
+                _Locality: locality,
+                _TypeOfPremises: typeOfPremises,
+                _Commencement: formattedCommencement,
+                _RecoverableRent: recoverableRent
+            },
+            success: function () {
+                // Perform actions on success
+                closeModal(); // Close the modal
+                // You might want to refresh your data or perform other actions
+            },
+            error: function () {
+                // Handle error
+            }
+        });
+    }
+
     //View Customer
     function viewCustomer(id) {
         $.ajax({
@@ -826,7 +700,6 @@
                 $('#popupEmailDetails').text('Email : ' + response._Email);
                 $('#popupTotalRentDetails').text('Rent : $' + response._TotalRent+'/-');
                 $('#popuprentTypeDetails').text('Rent Category : ' + response._TypeOfRent);
-                var onlydate = response._NextDueDate.split("T")[0];
                 $('#popupDueDateDetails').text('Due Date : ' + onlydate);
                 
                 //can work with both css and hide function---same result
@@ -844,59 +717,166 @@
             }
         });
     }
+    function editRentCard(id) {
+        // Fetch the rent card data by ID using AJAX and populate the form fields
+        $.ajax({
+            url: '/RentCard/Edit?id=' + id,
+            type: 'GET',
+
+            success: function (data) {
+                $("#createRentCardModal").modal("show");
+                $('#createRentCardButton').hide();
+                $('#UpdateCardBTN').show();
+                $("#createRentCardModalLabel").text("Edit Rent Card");
+                $('#_NameOfTenant').val(data._NameOfTenant);
+                $('#_BusinessPlace').val(data._BusinessPlace);
+                $('#_ContactNo').val(data._ContactNo);
+                $('#_EmergencyName').val(data._EmergencyName);
+                $('#_EmergencyTel').val(data._EmergencyTel);
+                $('#_NameOfLandlord').val(data._NameOfLandlord);
+                $('#_AddressOfLandlord').val(data._AddressOfLandlord);
+                $('#_ContactOfLandlord').val(data._ContactOfLandlord);
+                $('#_AgentName').val(data._AgentName);
+                $('#_HouseNumber').val(data._HouseNumber);
+                $('#_Locality').val(data._Locality);
+                $('#_TypeOfPremises').val(data._TypeOfPremises);
+                $('#_Commencement').val((data._Commencement).split('T')[0]);
+                $('#_RecoverableRent').val(data._RecoverableRent);
+
+                // Show the modal
+                
+            },
+            error: function () {
+                alert("First Fill in the Rent Card");
+            }
+        });
+    }
     //Edit Customer
     function editCustomer(id) {
+        
+        // Fetch the customer data by ID using AJAX and populate the form fields
         $.ajax({
             url: '/Customer/Edit?id=' + id,
             type: 'GET',
-            success: function (response) {
-                createCustomer();
-                $('#popupId').val(response._id);
-                $('#popupName').val(response._Name);
-                $('#popupAddress').val(response._Address);
-                $('#popupContactNo').val(response._ContactNo);
-                $('#popupEmail').val(response._Email);
-                //can work with both css and hide function---same result
-                //$('#AddCustomerBTN').css('display','none');
-                //$('#UpdateCustomerBTN').css('display', 'block');
 
+            success: function (data) {
+                createCustomer();
                 $('#AddCustomerBTN').hide();
                 $('#UpdateCustomerBTN').show();
-                $('#Customerheading').text('Update Customer');
-                CustomerShow();
+                $("#Customerheading").text("Edit/View Customer");
+                $('#_popupId').val(data._Id);
+                $('#_popupName').val(data._Name);
+                $('#_popupGender').val(data._Gender);
+                $('#_popupDateOfBirth').val((data._DateOfBirth).split('T')[0]);
+                $('#_popupMaritalStatus').val(data._MaritalStatus);
+                $('#_popupChildren').val(data._Children);
+                $('#_popupContactNo').val(data._ContactNo);
+                $('#_popupTenancyBegan').val((data._TenancyBegan).split('T')[0]);
+                $('#_popupNationality').val(data._Nationality);
+                $('#_popupHomeTown').val(data._HomeTown);
+                $('#_popupOccupation').val(data._Occupation);
+                $('#_popupMName').val(data._MName);
+                $('#_popupMAddress').val(data._MAddress);
+                $('#_popupMContactNo').val(data._MContactNo);
+                $('#_popupMOccupation').val(data._MOccupation);
+                $('#_popupEName').val(data._EName);
+                $('#_popupEAddress').val(data._EAddress);
+                $('#_popupEContactNo').val(data._EContactNo);
+                $('#_popupEPosition').val(data._EPosition);
+                $('#_popupFName').val(data._FName);
+                $('#_popupFAddress').val(data._FAddress);
+                $('#_popupFContactNo').val(data._FContactNo);
+                $('#_popupFOccupation').val(data._FOccupation);
+                $('#_popupUName').val(data._UName);
+                $('#_popupUAddress').val(data._UAddress);
+                $('#_popupUContactNo').val(data._UContactNo);
+                $('#_popupUOccupation').val(data._UOccupation);
+                $('#_popupURelation').val(data._URelation);
+                // ... Populate other fields similarly// Assuming you have a showModal function
             },
             error: function () {
-             
+                // Handle error
             }
         });
     }
 
     function updateCustomer() {
 
-        var id = $('#popupId').val();
-        var name = $('#popupName').val();
-        var address = $('#popupAddress').val();
-        var contactNo = $('#popupContactNo').val();
-        var email = $('#popupEmail').val();
-        var TotalRent = $('#popupTotalRent').val();
-        var RentType = $('#popuprentType').val();
+        var id = $('#_popupId').val();
+        var name = $('#_popupName').val();
+        var gender = $('#_popupGender').val();
+        var dateOfBirth = $('#_popupDateOfBirth').val();
+        var maritalStatus = $('#_popupMaritalStatus').val();
+        var children = $('#_popupChildren').val();
+        var contactNo = $('#_popupContactNo').val();
+        var tenancyBegan = $('#_popupTenancyBegan').val();
+        var nationality = $('#_popupNationality').val();
+        var homeTown = $('#_popupHomeTown').val();
+        var occupation = $('#_popupOccupation').val();
+        var mName = $('#_popupMName').val();
+        var mAddress = $('#_popupMAddress').val();
+        var mContactNo = $('#_popupMContactNo').val();
+        var mOccupation = $('#_popupMOccupation').val();
+        var eName = $('#_popupEName').val();
+        var eAddress = $('#_popupEAddress').val();
+        var eContactNo = $('#_popupEContactNo').val();
+        var ePosition = $('#_popupEPosition').val();
+        var fName = $('#_popupFName').val();
+        var fAddress = $('#_popupFAddress').val();
+        var fContactNo = $('#_popupFContactNo').val();
+        var fOccupation = $('#_popupFOccupation').val();
+        var uName = $('#_popupUName').val();
+        var uAddress = $('#_popupUAddress').val();
+        var uContactNo = $('#_popupUContactNo').val();
+        var uOccupation = $('#_popupUOccupation').val();
+        var uRelation = $('#_popupURelation').val();
+        var email = $('#_popupEmail').val();
+        var totalRent = $('#_popupTotalRent').val();
+        var rentType = $('#_popupRentType').val();
+      
 
-        if (!id || !name || !address || !contactNo || !email || !TotalRent || !RentType) {
-            alert('Please fill in all the required fields.');
-            return;
-        }
+
+
+        // Assuming you have a formatDate function to convert the date format
+        var formattedDOB = formatDate(dateOfBirth);
+        var formattedTenancyBegan = formatDate(tenancyBegan);
 
         $.ajax({
             url: '/Customer/Update',
             type: 'POST',
             data: {
-                _id: id,
+                _Id: id,
                 _Name: name,
-                _Address: address,
-                _ContactNo: ContactNo,
+                _Gender: gender,
+                _DateOfBirth: formattedDOB,
+                _MaritalStatus: maritalStatus,
+                _Children: children,
+                _ContactNo: contactNo,
+                _TenancyBegan: formattedTenancyBegan,
+                _Nationality: nationality,
+                _HomeTown: homeTown,
+                _Occupation: occupation,
+                _MName: mName,
+                _MAddress: mAddress,
+                _MContactNo: mContactNo,
+                _MOccupation: mOccupation,
+                _EName: eName,
+                _EAddress: eAddress,
+                _EContactNo: eContactNo,
+                _EPosition: ePosition,
+                _FName: fName,
+                _FAddress: fAddress,
+                _FContactNo: fContactNo,
+                _FOccupation: fOccupation,
+                _UName: uName,
+                _UAddress: uAddress,
+                _UContactNo: uContactNo,
+                _UOccupation: uOccupation,
+                _URelation: uRelation,
                 _Email: email,
-                _TotalRent: TotalRent,
-                _TypeOfRent: RentType
+                _TotalRent: totalRent,
+                _RentType: rentType
+                
             },
             success: function () {
                 cleartextbox();
@@ -904,9 +884,9 @@
                 closeModal();
             },
             error: function () {
-          
+                // Handle error
             }
         });
     }
 
-</script>*@
+</script>

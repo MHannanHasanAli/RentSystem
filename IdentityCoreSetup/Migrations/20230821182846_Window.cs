@@ -5,7 +5,7 @@
 namespace IdentityCoreSetup.Migrations
 {
     /// <inheritdoc />
-    public partial class Reboot : Migration
+    public partial class Window : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

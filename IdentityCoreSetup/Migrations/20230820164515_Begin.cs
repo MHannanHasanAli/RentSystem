@@ -58,17 +58,90 @@ namespace IdentityCoreSetup.Migrations
                 {
                     _Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    _Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    _Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    _MaritalStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _Children = table.Column<int>(type: "int", nullable: true),
                     _ContactNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    _Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    _TotalRent = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    _TypeOfRent = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    _NextDueDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    _TenancyBegan = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    _Nationality = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _HomeTown = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _Occupation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _MName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _MAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _MContactNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _MOccupation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _EName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _EAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _EContactNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _EPosition = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _FName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _FAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _FContactNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _FOccupation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _UName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _UAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _UContactNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _UOccupation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _URelation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _RentCard = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_customers", x => x._Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "parents",
+                columns: table => new
+                {
+                    _Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    _CustomerId = table.Column<int>(type: "int", nullable: false),
+                    _MName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _MAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _MContactNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _MOccupation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _EName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _EAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _EContactNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _EPosition = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _FName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _FAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _FContactNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    _FOccupation = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_parents", x => x._Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "rentcards",
+                columns: table => new
+                {
+                    _Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    _NameOfTenant = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    _BusinessPlace = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    _ContactNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    _EmergencyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    _EmergencyTel = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    _NameOfLandlord = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    _AddressOfLandlord = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    _ContactOfLandlord = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    _AgentName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    _HouseNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    _Locality = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    _TypeOfPremises = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    _Commencement = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    _RecoverableRent = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    _CustomerId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_rentcards", x => x._Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -254,6 +327,12 @@ namespace IdentityCoreSetup.Migrations
 
             migrationBuilder.DropTable(
                 name: "customers");
+
+            migrationBuilder.DropTable(
+                name: "parents");
+
+            migrationBuilder.DropTable(
+                name: "rentcards");
 
             migrationBuilder.DropTable(
                 name: "rents");

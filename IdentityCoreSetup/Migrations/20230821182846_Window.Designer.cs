@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IdentityCoreSetup.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230801121910_Startt")]
-    partial class Startt
+    [Migration("20230821182846_Window")]
+    partial class Window
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -104,32 +104,146 @@ namespace IdentityCoreSetup.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("_Id"));
 
-                    b.Property<string>("_Address")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("_Children")
+                        .HasColumnType("int");
 
                     b.Property<string>("_ContactNo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("_Email")
+                    b.Property<DateTime>("_DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("_EAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_EContactNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_EName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_EPosition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_FAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_FContactNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_FName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_FOccupation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_Gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_HomeTown")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_MAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_MContactNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_MName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_MOccupation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_MaritalStatus")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("_Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_Nationality")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_Occupation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_RentCard")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("_NextDueDate")
+                    b.Property<DateTime>("_TenancyBegan")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("_TotalRent")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("_UAddress")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("_TypeOfRent")
-                        .IsRequired()
+                    b.Property<string>("_UContactNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_UName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_UOccupation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_URelation")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("_Id");
 
                     b.ToTable("customers");
+                });
+
+            modelBuilder.Entity("IdentityCoreSetup.Entities.Parents", b =>
+                {
+                    b.Property<int>("_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("_Id"));
+
+                    b.Property<int>("_CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("_EAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_EContactNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_EName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_EPosition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_FAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_FContactNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_FName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_FOccupation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_MAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_MContactNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_MName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_MOccupation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("_Id");
+
+                    b.ToTable("parents");
                 });
 
             modelBuilder.Entity("IdentityCoreSetup.Entities.Rent", b =>
@@ -140,26 +254,99 @@ namespace IdentityCoreSetup.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("_Id"));
 
-                    b.Property<decimal>("_Amount")
+                    b.Property<decimal>("_AmountPaid")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("_CustomerId")
-                        .HasColumnType("int");
+                    b.Property<string>("_Arrears")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("_CustomerName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("_PaymentDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("_Month")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("_Type")
+                    b.Property<string>("_Receiver")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("_Id");
 
                     b.ToTable("rents");
+                });
+
+            modelBuilder.Entity("IdentityCoreSetup.Entities.RentCard", b =>
+                {
+                    b.Property<int>("_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("_Id"));
+
+                    b.Property<string>("_AddressOfLandlord")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_AgentName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_BusinessPlace")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("_Commencement")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("_ContactNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_ContactOfLandlord")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("_CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("_EmergencyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_EmergencyTel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_HouseNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_Locality")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_NameOfLandlord")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_NameOfTenant")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_RecoverableRent")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_TypeOfPremises")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("_Id");
+
+                    b.ToTable("rentcards");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

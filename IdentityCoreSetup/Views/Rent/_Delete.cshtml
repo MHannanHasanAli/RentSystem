@@ -1,0 +1,50 @@
+﻿@model IdentityCoreSetup.ViewModel.RentViewModel.RentListingViewModel
+
+@if (Model != null)
+{
+    <div class="card-content">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span>Delete Rent</span>
+            </h5>
+          
+        </div>
+        <div class="card-body">
+            <form id="actionForm">
+               
+                <input type="hidden" name="_Id" value="@Model._Id" />
+            </form>
+            <div class="alert alert-danger" role="alert">
+                Are you sure you want to delete this Product?
+            </div>
+        </div>
+        <div class="card-footer">
+            <button id="actionButton" type="button" class="btn btn-danger"><i class="fas fa-trash-alt mr-1"></i> Delete</button>
+            <a href="@Url.Action("Index","Rent")" class="btn btn-secondary" ><i class="fas fa-times mr-1"></i> Close</a>
+        </div>
+    </div>
+}
+
+<script>
+    $(document).ready(function(){
+        console.log("Activated");
+    });
+	$("#actionButton").click(function () {
+       
+		$.ajax({
+			url: '@Url.Action("Delete", "Rent")',
+			type: "post",
+			data: $("#actionForm").serialize()
+		})
+		.done(function (response) {
+			if(response.success)
+            {
+                alert("Deleted Successfully");
+				window.location.href = "@Url.Action("Index", "Rent")";
+			}
+			else {
+				$(".errorDiv").html(response.Message);
+			}
+		});
+	});
+</script>

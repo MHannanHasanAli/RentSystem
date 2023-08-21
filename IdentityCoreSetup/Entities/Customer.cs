@@ -5,8 +5,10 @@ namespace IdentityCoreSetup.Entities
     public class Customer
     {
         [Key]
-        public int _Id { get; set; }  
-       
+        public int _Id { get; set; }
+
+        public string? _Name { get; set; }
+        public string? _Gender { get; set; }
         public DateTime _DateOfBirth { get; set; }
         public string? _MaritalStatus { get; set; }
         public int? _Children { get; set; }
@@ -32,11 +34,6 @@ namespace IdentityCoreSetup.Entities
         public string? _UContactNo { get; set; }
         public string? _UOccupation { get; set; }
         public string? _URelation { get; set; }
-
-        
-
-        //public decimal? _TotalRent { get; set; }
-        //public string? _TypeOfRent { get; set; }
-        //public DateTime _NextDueDate { get; set; }
+        public string _RentCard { get; set; }
     }
 }

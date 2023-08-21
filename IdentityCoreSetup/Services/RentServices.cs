@@ -1,18 +1,27 @@
 ﻿using IdentityCoreSetup.Data;
 using IdentityCoreSetup.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace IdentityCoreSetup.Services
 {
     public class RentServices
     {
-       
-        public List<Rent> GetRents()
+
+        public List<Rent> GetRents(string SearchTerm = "")
         {
             using (var context = new ApplicationDbContext())
             {
-                var data = context.rents.ToList();
-                data.Reverse();
-                return data;
+                if (SearchTerm != "")
+                {
+                    return context.rents.Where(p => p._CustomerName != null && p._CustomerName.ToLower()
+                                            .Contains(SearchTerm.ToLower()))
+                                            .OrderBy(x => x._CustomerName)
+                                            .ToList();
+                }
+                else
+                {
+                    return context.rents.OrderBy(x => x._CustomerName).ToList();
+                }
             }
         }
 
